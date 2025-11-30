@@ -3709,3 +3709,25 @@ export const quizzes: Quizzes = {
       ],
     },
 };
+
+// --- LEADERBOARD DATA ---
+
+export interface LeaderboardEntry {
+  rank: number;
+  username: string;
+  score: number;
+  time: string;
+}
+
+export const leaderboardData: LeaderboardEntry[] = [
+  { rank: 1, username: 'lexie', score: 980, time: '12:30' },
+  { rank: 2, username: 'ryan', score: 950, time: '11:45' },
+  { rank: 3, username: 'cameron', score: 920, time: '13:10' },
+  { rank: 4, username: 'jordan', score: 890, time: '10:55' },
+  { rank: 5, username: 'alex', score: 850, time: '14:02' },
+  { rank: 6, username: 'casey', score: 820, time: '12:50' },
+  { rank: 7, username: 'morgan', score: 790, time: '15:20' },
+  { rank: 8, username: 'taylor', score: 760, time: '13:45' },
+  { rank: 9, username: 'jamie', score: 730, time: '16:00' },
+  { rank: 10, username: 'skyler', score: 700, time: '14:55' },
+];
