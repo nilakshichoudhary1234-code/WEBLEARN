@@ -9,6 +9,13 @@ const fontBody = Inter({
   variable: '--font-body',
 });
 
+const fontHeadline = Inter({
+  subsets: ['latin'],
+  variable: '--font-headline',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+});
+
+
 const fontCode = Source_Code_Pro({
   subsets: ['latin'],
   variable: '--font-code',
@@ -26,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn('antialiased', fontBody.variable, fontCode.variable)}>
+      <body className={cn('antialiased', fontBody.variable, fontHeadline.variable, fontCode.variable)}>
         {children}
         <Toaster />
       </body>
