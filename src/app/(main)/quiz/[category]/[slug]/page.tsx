@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Progress } from '@/components/ui/progress';
 import { CheckCircle2, XCircle, Trophy, BarChart2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 const TIME_PER_QUESTION = 20; // seconds
 
@@ -28,16 +29,23 @@ export default function QuizPage() {
     if (typeof category === 'string' && typeof slug === 'string') {
       const quizData = quizzes[category as keyof typeof quizzes]?.[slug];
       if (quizData) {
-        setQuestions(quizData);
+        // Shuffle questions and options for variety
+        const shuffledQuestions = quizData
+          .sort(() => Math.random() - 0.5)
+          .map((q) => ({
+            ...q,
+            options: q.options.sort(() => Math.random() - 0.5),
+          }));
+        setQuestions(shuffledQuestions);
       }
     }
   }, [category, slug]);
 
   useEffect(() => {
-    if (quizFinished || selectedAnswer !== null) return;
+    if (quizFinished || questions.length === 0 || selectedAnswer !== null) return;
 
     if (timeLeft === 0) {
-      handleAnswerSelect(-1, -1); // Auto-submit incorrect on time out
+      handleAnswerSelect(-1); // Auto-submit incorrect on time out
       return;
     }
 
@@ -46,11 +54,15 @@ export default function QuizPage() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft, quizFinished, selectedAnswer]);
+  }, [timeLeft, quizFinished, selectedAnswer, questions]);
   
-  const handleAnswerSelect = (optionIndex: number, correctAnswerIndex: number) => {
+  const handleAnswerSelect = (optionIndex: number) => {
+    const correctAnswer = questions[currentQuestionIndex].options[questions[currentQuestionIndex].correctAnswer];
+    const selectedOption = questions[currentQuestionIndex].options[optionIndex];
+
     setSelectedAnswer(optionIndex);
-    if (optionIndex === correctAnswerIndex) {
+
+    if (selectedOption === correctAnswer) {
       setIsCorrect(true);
       setScore((prev) => prev + 1);
     } else {
@@ -70,7 +82,15 @@ export default function QuizPage() {
   };
 
   if (questions.length === 0 && !quizFinished) {
-    return <div className="container mx-auto py-8 text-center">Loading quiz...</div>;
+    return (
+      <div className="container mx-auto py-8 text-center">
+        <h1 className="text-2xl font-bold mb-4">Loading Quiz...</h1>
+        <p>Or maybe this quiz hasn't been created yet!</p>
+         <Button asChild variant="link" className="mt-4">
+            <Link href="/modules">Back to Modules</Link>
+        </Button>
+      </div>
+    );
   }
 
   if (quizFinished) {
@@ -103,6 +123,23 @@ export default function QuizPage() {
   }
 
   const currentQuestion = questions[currentQuestionIndex];
+  // We need to find the correct index in the *shuffled* options array
+  const correctOptionText = currentQuestion.options.find((_opt: string, index: number) => {
+      // The original correctAnswer is the index in the UNSHUFFLED array.
+      // We need to compare the text content to find the new correct index.
+      // This is a bit of a hack because we didn't store the correct answer text itself.
+      // A better data structure would be an array of objects: [{text: '...', isCorrect: true}, ...]
+      // For now, we find the text that corresponds to the original correct index.
+      const originalCorrectOptionText = quizzes[category as keyof typeof quizzes]![slug as any]
+        .find((q: any) => q.question === currentQuestion.question)!
+        .options[
+          quizzes[category as keyof typeof quizzes]![slug as any]
+          .find((q: any) => q.question === currentQuestion.question)!.correctAnswer
+        ];
+
+      return _opt === originalCorrectOptionText;
+  });
+  const newCorrectAnswerIndex = currentQuestion.options.indexOf(correctOptionText);
 
   return (
     <div className="container mx-auto max-w-2xl py-8">
@@ -117,15 +154,8 @@ export default function QuizPage() {
         <CardContent className="space-y-4">
           {currentQuestion.options.map((option: string, index: number) => {
             const isSelected = selectedAnswer === index;
-            const isCorrectOption = index === currentQuestion.correctAnswer;
+            const isCorrectOption = index === newCorrectAnswerIndex;
             
-            let variant: "default" | "secondary" | "destructive" | "outline" | "ghost" | "link" = "outline";
-            if(selectedAnswer !== null) {
-                if (isSelected && isCorrect) variant = "default";
-                else if (isSelected && !isCorrect) variant = "destructive";
-                else if (isCorrectOption) variant = "default";
-            }
-
             return (
               <Button
                 key={index}
@@ -134,7 +164,7 @@ export default function QuizPage() {
                     'bg-red-100 dark:bg-red-900 border-red-500 text-red-800 dark:text-red-200 hover:bg-red-200': selectedAnswer !== null && isSelected && !isCorrect
                 })}
                 variant={selectedAnswer === null ? "outline" : "secondary"}
-                onClick={() => handleAnswerSelect(index, currentQuestion.correctAnswer)}
+                onClick={() => handleAnswerSelect(index)}
                 disabled={selectedAnswer !== null}
               >
                 <span className="mr-4 flex h-6 w-6 items-center justify-center rounded-full border">{String.fromCharCode(65 + index)}</span>

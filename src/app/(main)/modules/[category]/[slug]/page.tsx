@@ -26,7 +26,7 @@ export default function SubmodulePage({ params }: SubmodulePageProps) {
   return (
     <div className="container mx-auto max-w-4xl py-8 px-4 md:px-6">
       <div className="mb-8">
-        <Badge variant="secondary" className="mb-2">
+        <Badge variant="secondary" className="mb-2 capitalize">
           {category.name}
         </Badge>
         <h1 className="text-4xl font-bold tracking-tight text-foreground font-headline">
@@ -43,7 +43,7 @@ export default function SubmodulePage({ params }: SubmodulePageProps) {
         {output && (
           <>
             <h3 className="text-xl font-semibold mt-6 font-headline">Output Preview</h3>
-            <div className="rounded-md border p-4 text-sm text-muted-foreground italic">
+            <div className="rounded-md border bg-card p-4 text-sm text-card-foreground italic">
               {output}
             </div>
           </>
