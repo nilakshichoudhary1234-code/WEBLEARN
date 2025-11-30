@@ -36,11 +36,13 @@ export default function ModulesPage() {
             <AccordionItem
               key={category.slug}
               value={category.slug}
-              className="border rounded-lg bg-card"
+              className="border rounded-lg bg-card group"
             >
               <AccordionTrigger className="p-6 hover:no-underline">
                 <div className="flex items-center gap-4 w-full">
-                  <category.icon className="h-10 w-10 text-primary flex-shrink-0" />
+                  <div className="relative flex-shrink-0">
+                    <category.icon className="h-10 w-10 cyber-icon" />
+                  </div>
                   <div className="flex-grow text-left">
                     <h2 className="font-headline text-2xl">{category.name}</h2>
                     <p className="text-sm text-muted-foreground mt-1">
