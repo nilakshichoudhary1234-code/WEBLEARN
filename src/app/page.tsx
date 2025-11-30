@@ -21,17 +21,17 @@ export default function Home() {
         <div className="container mx-auto px-4 text-center md:px-6">
           <div className="mx-auto max-w-3xl">
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline">
-              Web Dev Quiz Platform
+              Welcome to CodeClash Quizzes
             </h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground md:text-xl">
-              Learn. Practice. Excel. Become a Web Developer.
+              "The best way to predict the future is to create it."
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Button size="lg" asChild>
                 <Link href="/auth">Login / Sign Up</Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="/modules">Start Learning Modules</Link>
+                <Link href="/modules">Start Learning</Link>
               </Button>
             </div>
           </div>

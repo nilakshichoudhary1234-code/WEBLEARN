@@ -73,6 +73,10 @@ export default function AuthPage() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
+               <div className="space-y-2">
+                <Label htmlFor="username-signup">Username</Label>
+                <Input id="username-signup" type="text" placeholder="Your Username" required />
+              </div>
               <div className="space-y-2">
                 <Label htmlFor="email-signup">Email</Label>
                 <Input id="email-signup" type="email" placeholder="m@example.com" required />
@@ -81,14 +85,10 @@ export default function AuthPage() {
                 <Label htmlFor="password-signup">Password</Label>
                 <Input id="password-signup" type="password" required />
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="confirm-password-signup">Confirm Password</Label>
-                <Input id="confirm-password-signup" type="password" required />
-              </div>
             </CardContent>
             <CardFooter>
               <Button className="w-full" onClick={handleContinue}>
-                Continue
+                Sign Up
               </Button>
             </CardFooter>
           </Card>
