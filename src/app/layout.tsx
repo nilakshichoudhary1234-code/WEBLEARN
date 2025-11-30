@@ -15,8 +15,8 @@ const fontCode = Source_Code_Pro({
 });
 
 export const metadata: Metadata = {
-  title: 'CodeClash Quizzes',
-  description: 'Learn. Practice. Excel. Become a Web Developer.',
+  title: 'Debug Your Brain: The Ultimate Web Dev Quiz',
+  description: 'Sharpen your web dev skills. One quiz at a time.',
 };
 
 export default function RootLayout({

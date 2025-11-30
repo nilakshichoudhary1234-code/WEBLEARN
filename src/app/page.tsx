@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-br from-background via-purple-100 to-accent dark:from-background dark:via-purple-950/20 dark:to-purple-950/10">
+    <div className="flex min-h-screen flex-col bg-gradient-to-br from-background via-purple-950/20 to-accent/30">
       <header className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Logo />
         <nav className="flex items-center gap-4">
@@ -21,10 +21,10 @@ export default function Home() {
         <div className="container mx-auto px-4 text-center md:px-6">
           <div className="mx-auto max-w-3xl">
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline">
-              Welcome to CodeClash Quizzes
+              Debug Your Brain: The Ultimate Web Dev Quiz
             </h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground md:text-xl">
-              "The best way to predict the future is to create it."
+              Sharpen your web dev skills. One quiz at a time.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Button size="lg" asChild>
@@ -41,7 +41,7 @@ export default function Home() {
       <footer className="container mx-auto py-6 px-4 md:px-6">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} CodeClash Quizzes. All rights reserved.
+            &copy; {new Date().getFullYear()} Debug Your Brain. All rights reserved.
           </p>
           <div className="flex gap-4">
             <Link href="#" className="text-sm text-muted-foreground hover:text-foreground">
