@@ -8,65 +8,65 @@ body {
 
 @layer base {
   :root {
-    --background: 224 71.4% 4.1%;
-    --foreground: 210 20% 98%;
+    --background: 261 80% 6%; /* Deep purple-navy background */
+    --foreground: 225 30% 95%; /* Light, almost white text */
 
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 20% 98%;
+    --card: 261 70% 12%; /* Darker card background for depth */
+    --card-foreground: 225 30% 95%;
 
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 210 20% 98%;
+    --popover: 261 70% 9%;
+    --popover-foreground: 225 30% 95%;
 
-    --primary: 142.1 76.2% 36.3%; /* Green */
-    --primary-foreground: 142.1 76.2% 16.3%;
+    --primary: 187 100% 50%; /* Electric Blue */
+    --primary-foreground: 261 80% 10%;
 
-    --secondary: 222.2 47.4% 11.2%;
-    --secondary-foreground: 210 20% 98%;
+    --secondary: 267 78% 53%; /* Vibrant Purple */
+    --secondary-foreground: 225 30% 95%;
 
-    --muted: 215 27.9% 16.9%;
-    --muted-foreground: 217.9 10.6% 64.9%;
+    --muted: 261 60% 20%;
+    --muted-foreground: 240 10% 65%;
 
-    --accent: 257.9 86.8% 50.4%; /* Purple */
-    --accent-foreground: 210 20% 98%;
+    --accent: 187 100% 50%; /* Electric Blue as accent */
+    --accent-foreground: 261 80% 10%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 85.7% 97.3%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
-    --ring: 142.1 76.2% 36.3%;
+    --border: 261 60% 25%;
+    --input: 261 60% 25%;
+    --ring: 187 100% 60%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
   }
 
   .dark {
-    --background: 224 71.4% 4.1%;
-    --foreground: 210 20% 98%;
+    --background: 261 80% 6%;
+    --foreground: 225 30% 95%;
 
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 20% 98%;
+    --card: 261 70% 12%;
+    --card-foreground: 225 30% 95%;
 
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 210 20% 98%;
+    --popover: 261 70% 9%;
+    --popover-foreground: 225 30% 95%;
 
-    --primary: 142.1 76.2% 36.3%;
-    --primary-foreground: 142.1 76.2% 16.3%;
+    --primary: 187 100% 50%;
+    --primary-foreground: 261 80% 10%;
 
-    --secondary: 222.2 47.4% 11.2%;
-    --secondary-foreground: 210 20% 98%;
+    --secondary: 267 78% 53%;
+    --secondary-foreground: 225 30% 95%;
 
-    --muted: 215 27.9% 16.9%;
-    --muted-foreground: 217.9 10.6% 64.9%;
+    --muted: 261 60% 20%;
+    --muted-foreground: 240 10% 65%;
 
-    --accent: 257.9 86.8% 50.4%;
-    --accent-foreground: 210 20% 98%;
+    --accent: 187 100% 50%;
+    --accent-foreground: 261 80% 10%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 85.7% 97.3%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
-    --ring: 142.1 76.2% 36.3%;
+    --border: 261 60% 25%;
+    --input: 261 60% 25%;
+    --ring: 187 100% 60%;
   }
 }
 
@@ -76,53 +76,23 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    background:
+      radial-gradient(ellipse 80% 80% at 50% -20%, hsl(var(--secondary) / 0.3), transparent),
+      hsl(var(--background));
   }
 }
 
 @layer utilities {
-  .text-glitter-orange {
-    @apply relative bg-clip-text text-transparent;
-    background-image: linear-gradient(
-      110deg,
-      #ffab2d,
-      #ff7a00,
-      #fff0a8,
-      #ff7a00,
-      #ffab2d
-    );
-    background-size: 200% 100%;
-    animation: glitter-scroll 5s linear infinite;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow:
-      0 0 5px theme('colors.orange.500 / 0.5'),
-      0 0 10px theme('colors.orange.500 / 0.4'),
-      0 0 20px theme('colors.orange.500 / 0.3');
+  .glowing-underline {
+    @apply relative;
   }
-
-  @keyframes glitter-scroll {
-    0% {
-      background-position: 200% 0;
-    }
-    100% {
-      background-position: -200% 0;
-    }
-  }
-}
-
-@layer components {
-  .cyber-icon {
-    @apply relative text-orange-400 transition-all duration-300;
-    filter: drop-shadow(0 0 5px theme('colors.orange.500 / 0.7')) drop-shadow(0 0 2px theme('colors.black'));
-  }
-  .cyber-icon::before {
+  .glowing-underline::after {
     content: '';
-    @apply absolute inset-0 rounded-full;
-    background: radial-gradient(circle at 50% 30%, theme('colors.orange.300 / 0.5'), transparent 70%);
-    box-shadow: inset 0 0 5px theme('colors.orange.400 / 0.6');
+    @apply absolute bottom-0 left-0 h-[2px] w-full scale-x-0 rounded-full bg-primary transition-transform duration-300 ease-out;
+    transform-origin: center;
+    box-shadow: 0 0 8px hsl(var(--primary));
   }
-  .group:hover .cyber-icon, .cyber-icon:hover {
-    @apply scale-110 text-orange-300;
-    filter: drop-shadow(0 0 10px theme('colors.orange.400')) drop-shadow(0 0 15px theme('colors.orange.500 / 0.6')) drop-shadow(0 0 2px theme('colors.black'));
+  .glowing-underline:hover::after {
+    @apply scale-x-100;
   }
 }

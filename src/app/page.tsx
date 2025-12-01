@@ -1,161 +1,111 @@
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { Code, CheckSquare, Clock } from 'lucide-react';
 import Link from 'next/link';
 import { Logo } from '@/components/Logo';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { BarChart, Menu } from 'lucide-react';
+import { CodeXml, Paintbrush, ArrowRight } from 'lucide-react';
+import { JsIcon } from '@/components/JsIcon';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-const CodeSnippet = ({
-  code,
-  language,
-  className,
-}: {
-  code: string;
-  language: string;
-  className?: string;
-}) => (
-  <div
-    className={`absolute rounded-lg border border-white/10 bg-black/30 p-4 text-sm shadow-lg backdrop-blur-md ${className}`}
-  >
-    <div className="mb-2 flex items-center justify-between">
-      <span className="text-xs font-medium text-gray-400">{language}</span>
-      <div className="flex gap-1.5">
-        <div className="h-2 w-2 rounded-full bg-red-500"></div>
-        <div className="h-2 w-2 rounded-full bg-yellow-500"></div>
-        <div className="h-2 w-2 rounded-full bg-green-500"></div>
-      </div>
-    </div>
-    <pre className="font-code text-white">
-      <code>{code}</code>
-    </pre>
-  </div>
-);
+const modules = [
+  {
+    name: 'HTML',
+    icon: CodeXml,
+    href: '/modules/html',
+  },
+  {
+    name: 'CSS',
+    icon: Paintbrush,
+    href: '/modules/css',
+  },
+  {
+    name: 'JavaScript',
+    icon: JsIcon,
+    href: '/modules/javascript',
+  },
+];
 
 export default function Home() {
   return (
-    <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-gray-900 text-white">
-      {/* Background Grid and Gradients */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 bg-gray-900"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)',
-            backgroundSize: '20px 20px',
-          }}
-        ></div>
-        <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black to-transparent"></div>
-      </div>
-
+    <div className="flex min-h-screen w-full flex-col">
       {/* Header */}
       <header className="absolute top-0 z-20 flex h-20 w-full items-center justify-between px-6 md:px-10">
-        <Link
-          href="/"
-          className="text-2xl font-bold tracking-wider text-white font-headline"
-        >
-          DEV QUIZ
-        </Link>
-        <nav className="flex items-center gap-4">
-          <Link href="/leaderboard" className="hidden sm:block">
-            <Button variant="ghost" className="text-white hover:bg-white/10">
-              Leaderboard
-            </Button>
+        <Logo />
+        <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
+          <Link href="/" className="glowing-underline">
+            Home
           </Link>
-          <Button variant="ghost" asChild>
-            <Link href="/auth">Login</Link>
-          </Button>
-          <Button asChild className="bg-primary hover:bg-primary/90">
-            <Link href="/auth">Sign Up</Link>
-          </Button>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild className="sm:hidden">
-              <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem asChild>
-                <Link href="/leaderboard">Leaderboard</Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <Link href="/auth" className="glowing-underline text-muted-foreground hover:text-foreground">
+            Login
+          </Link>
+          <Link href="/modules" className="glowing-underline text-muted-foreground hover:text-foreground">
+            Modules
+          </Link>
+          <Link href="/quiz/html/introduction-to-html" className="glowing-underline text-muted-foreground hover:text-foreground">
+            Quiz
+          </Link>
+          <Link href="/leaderboard" className="glowing-underline text-muted-foreground hover:text-foreground">
+            Leaderboard
+          </Link>
         </nav>
+        <Button variant="ghost" asChild>
+          <Link href="/auth">Get Started</Link>
+        </Button>
       </header>
 
-      {/* Floating Code Snippets */}
-      <div className="absolute inset-0 z-10 hidden md:block">
-        <CodeSnippet
-          code={`const greet = () => {\n  console.log("Hello!");\n}`}
-          language="javascript"
-          className="top-[15%] left-[10%] rotate-[-8deg]"
-        />
-        <CodeSnippet
-          code={`.card {\n  border-radius: 1rem;\n}`}
-          language="css"
-          className="top-[30%] right-[8%] rotate-[10deg]"
-        />
-        <CodeSnippet
-          code={`<h1>Title</h1>\n<p>Text</p>`}
-          language="html"
-          className="bottom-[20%] left-[12%] rotate-[5deg]"
-        />
-      </div>
+      {/* Hero Section */}
+      <main className="flex flex-1 flex-col items-center justify-center p-4 text-center">
+        <div 
+          className="absolute inset-0 -z-10 h-full w-full bg-background"
+        >
+          <div 
+            className="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[hsl(var(--primary)/0.5)] opacity-50 blur-[80px]"
+          ></div>
+        </div>
 
-      <main className="z-10 mt-20 flex flex-1 items-center justify-center p-4">
-        <div className="relative w-full max-w-2xl">
-          <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-blue-600 to-green-400 opacity-50 blur-xl"></div>
-          <Card className="relative rounded-2xl border-white/10 bg-gray-900/80 shadow-2xl backdrop-blur-lg">
-            <CardHeader className="text-center">
-              <CardTitle className="font-headline text-4xl tracking-tight text-white sm:text-5xl md:text-6xl">
-                Web Dev Quiz Challenge
-              </CardTitle>
-              <CardDescription className="mt-4 text-lg text-gray-300 md:text-xl">
-                Test your knowledge and conquer the code!
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="mt-6 flex flex-col items-center justify-center gap-4 text-center sm:flex-row">
-              <div className="flex items-center gap-2 text-gray-400">
-                <Code className="h-4 w-4" />
-                <span>10 Questions</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-400">
-                <CheckSquare className="h-4 w-4" />
-                <span>Multiple Choice</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-400">
-                <Clock className="h-4 w-4" />
-                <span>~15 Minutes</span>
-              </div>
-            </CardContent>
-            <CardFooter className="mt-8 flex justify-center">
-              <Button
-                size="lg"
-                asChild
-                className="h-14 w-full max-w-xs rounded-full bg-green-500 text-lg font-bold text-black shadow-lg shadow-green-500/20 transition-all hover:bg-green-400 hover:shadow-green-400/30 sm:w-auto"
-              >
-                <Link href="/modules">START QUIZ</Link>
-              </Button>
-            </CardFooter>
-          </Card>
+        <div className="relative z-10">
+          <h1 className="font-headline text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
+            Build. Learn. Deploy.
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
+            The ultimate quiz platform to test and sharpen your web development skills.
+          </p>
+          <div className="mt-10">
+            <Button size="lg" asChild className="bg-primary text-primary-foreground shadow-[0_0_20px_hsl(var(--primary)/0.6)] hover:bg-primary/90 hover:shadow-[0_0_30px_hsl(var(--primary)/0.7)] transition-shadow">
+              <Link href="/modules">
+                Start Learning
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+
+        {/* Feature Cards Section */}
+        <div className="relative z-10 mt-24 grid w-full max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
+          {modules.map((module) => (
+            <Card key={module.name} className="group relative overflow-hidden rounded-xl border-border/30 bg-card/60 backdrop-blur-lg transition-all duration-300 hover:border-primary/50 hover:shadow-[0_0_30px_hsl(var(--primary)/0.2)]">
+              <div className="absolute -inset-px rounded-xl opacity-0 transition-all duration-300 group-hover:opacity-100" style={{
+                background: 'radial-gradient(400px at 50% 100%, hsl(var(--primary) / 0.15), transparent 80%)'
+              }}></div>
+              <CardHeader className="relative">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                  <module.icon className="h-8 w-8" />
+                </div>
+                <CardTitle className="text-center font-headline text-2xl text-foreground">
+                  {module.name}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="relative">
+                <p className="text-center text-muted-foreground">
+                  Master the fundamentals and advanced concepts of {module.name}.
+                </p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </main>
 
-      <footer className="absolute bottom-0 z-20 py-6 px-4 md:px-6">
-        <p className="text-center text-sm text-gray-500">
-          &copy; {new Date().getFullYear()} DEV QUIZ. All rights reserved.
+      <footer className="py-6 px-4 md:px-6">
+        <p className="text-center text-sm text-muted-foreground">
+          &copy; {new Date().getFullYear()} Web Dev Quiz. All rights reserved.
         </p>
       </footer>
     </div>
