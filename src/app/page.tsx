@@ -140,7 +140,7 @@ export default function Home() {
                 
                 {/* Phone */}
                 {phoneImage && (
-                  <div className="absolute -bottom-8 -right-4 w-1/3 max-w-[150px] sm:-bottom-12 sm:w-1/4" style={{ filter: 'drop-shadow(0 15px 15px rgb(0 0 0 / 0.4))' }}>
+                  <div className="absolute -bottom-8 right-0 w-1/3 max-w-[150px] sm:-bottom-12 sm:right-8 sm:w-1/4" style={{ filter: 'drop-shadow(0 15px 15px rgb(0 0 0 / 0.4))' }}>
                     <Image
                       src={phoneImage.imageUrl}
                       alt={phoneImage.description}
