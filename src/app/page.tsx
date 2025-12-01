@@ -52,7 +52,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <main className="flex flex-1 flex-col items-center justify-center p-4 text-center">
+      <main className="flex flex-1 flex-col items-center justify-center p-4 pt-28 text-center">
         <div 
           className="absolute inset-0 -z-10 h-full w-full bg-background"
         >
