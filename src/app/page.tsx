@@ -71,7 +71,7 @@ export default function Home() {
 
         <div className="relative z-10">
           <h1 className="font-headline text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
-            CodeClash
+            Debug Your Brain
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
             The Ultimate Web Dev Quiz

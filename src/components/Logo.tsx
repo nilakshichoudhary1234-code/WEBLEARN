@@ -11,7 +11,7 @@ export function Logo() {
         </div>
       </div>
       <span className="text-lg font-bold font-headline text-foreground">
-        CodeClash
+        Debug Your Brain
       </span>
     </Link>
   );
