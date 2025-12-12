@@ -114,13 +114,14 @@ export default function Home() {
       {/* Play Anywhere Section */}
       <section className="w-full py-24 sm:py-32">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="relative overflow-hidden rounded-2xl bg-slate-900/60 border border-slate-800 shadow-2xl">
-            <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]"></div>
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 to-black/80 border border-slate-800 shadow-2xl" style={{
+            backgroundImage: 'linear-gradient(to bottom right, hsl(222 47% 11%) 0%, hsl(0 0% 4%) 100%), url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.05\'/%3E%3C/svg%3E")'
+          }}>
             <div className="relative grid grid-cols-1 items-center gap-8 p-8 md:grid-cols-2 md:p-12 lg:gap-16">
               <div className="relative flex h-full min-h-[300px] w-full items-center justify-center md:min-h-[450px]">
                 {/* Laptop */}
                 {laptopImage && (
-                  <div className="relative w-full max-w-lg" style={{ filter: 'drop-shadow(0 25px 25px rgb(0 0 0 / 0.3))' }}>
+                  <div className="relative w-full max-w-lg" style={{ filter: 'drop-shadow(0 25px 25px rgb(0 0 0 / 0.5))' }}>
                      <Image
                       src={laptopImage.imageUrl}
                       alt={laptopImage.description}
@@ -135,7 +136,7 @@ export default function Home() {
                 
                 {/* Phone */}
                 {phoneImage && (
-                  <div className="absolute -bottom-8 right-0 w-1/3 max-w-[150px] sm:-bottom-12 sm:right-8 sm:w-1/4" style={{ filter: 'drop-shadow(0 15px 15px rgb(0 0 0 / 0.4))' }}>
+                  <div className="absolute -bottom-8 right-0 w-1/3 max-w-[150px] sm:-bottom-12 sm:right-8 sm:w-1/4" style={{ filter: 'drop-shadow(0 25px 25px rgb(0 0 0 / 0.5))' }}>
                     <Image
                       src={phoneImage.imageUrl}
                       alt={phoneImage.description}
@@ -152,7 +153,10 @@ export default function Home() {
                   Play anywhere, anytime
                 </h2>
                 <p className="text-lg text-gray-300 md:text-xl">
-                 Our mobile-first design ensures a seamless responsive experience—master web dev quizzes on laptop or phone for anytime brain debugging.
+                  Seamless experiences across all devices.
+                </p>
+                 <p className="text-lg text-gray-300 md:text-xl">
+                  Optimized for mobile, scaled for desktop.
                 </p>
               </div>
             </div>
