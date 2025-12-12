@@ -152,10 +152,7 @@ export default function Home() {
                   Play anywhere, anytime
                 </h2>
                 <p className="text-lg text-gray-300 md:text-xl">
-                 Experience responsive design at its best—our quiz adapts seamlessly across devices for uninterrupted learning.
-                </p>
-                <p className="text-lg text-gray-400">
-                  Master web dev concepts on laptop or phone, anytime you need a brain boost.
+                 Our mobile-first design ensures a seamless responsive experience—master web dev quizzes on laptop or phone for anytime brain debugging.
                 </p>
               </div>
             </div>
