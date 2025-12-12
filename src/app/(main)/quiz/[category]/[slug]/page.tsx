@@ -57,12 +57,20 @@ export default function QuizPage() {
   }, [timeLeft, quizFinished, selectedAnswer, questions]);
   
   const handleAnswerSelect = (optionIndex: number) => {
-    const correctAnswer = questions[currentQuestionIndex].options[questions[currentQuestionIndex].correctAnswer];
-    const selectedOption = questions[currentQuestionIndex].options[optionIndex];
+    if (selectedAnswer !== null) return; // Prevent re-answering
+    const currentQuestion = questions[currentQuestionIndex];
+    const correctOptionText = quizzes[category as keyof typeof quizzes]![slug as any]
+      .find((q: any) => q.question === currentQuestion.question)!
+      .options[
+        quizzes[category as keyof typeof quizzes]![slug as any]
+        .find((q: any) => q.question === currentQuestion.question)!.correctAnswer
+      ];
+
+    const selectedOptionText = currentQuestion.options[optionIndex];
 
     setSelectedAnswer(optionIndex);
 
-    if (selectedOption === correctAnswer) {
+    if (selectedOptionText === correctOptionText) {
       setIsCorrect(true);
       setScore((prev) => prev + 1);
     } else {
@@ -96,20 +104,20 @@ export default function QuizPage() {
   if (quizFinished) {
     return (
       <div className="container mx-auto flex items-center justify-center min-h-[calc(100vh-8rem)] py-8">
-        <Card className="w-full max-w-md text-center">
+        <Card className="w-full max-w-md text-center glass-card confetti-burst">
             <CardHeader>
-                <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
+                <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit ring-4 ring-primary/20">
                     <Trophy className="w-12 h-12 text-primary"/>
                 </div>
-                <CardTitle className="text-3xl font-bold mt-4">Quiz Complete!</CardTitle>
+                <CardTitle className="text-3xl font-bold mt-4 font-headline">Quiz Complete!</CardTitle>
                 <CardDescription>You did a great job.</CardDescription>
             </CardHeader>
             <CardContent>
-                <p className="text-5xl font-bold">{Math.round((score / questions.length) * 100)}%</p>
+                <p className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-secondary to-primary">{Math.round((score / questions.length) * 100)}%</p>
                 <p className="text-muted-foreground mt-2">You answered {score} out of {questions.length} questions correctly.</p>
             </CardContent>
             <CardFooter className="flex-col gap-4">
-                <Button size="lg" className="w-full" onClick={() => router.push('/leaderboard')}>
+                <Button size="lg" className="w-full neon-glow-button" onClick={() => router.push('/leaderboard')}>
                     <BarChart2 className="mr-2 h-4 w-4"/>
                     View Leaderboard
                 </Button>
@@ -124,30 +132,21 @@ export default function QuizPage() {
 
   const currentQuestion = questions[currentQuestionIndex];
   // We need to find the correct index in the *shuffled* options array
-  const correctOptionText = currentQuestion.options.find((_opt: string, index: number) => {
-      // The original correctAnswer is the index in the UNSHUFFLED array.
-      // We need to compare the text content to find the new correct index.
-      // This is a bit of a hack because we didn't store the correct answer text itself.
-      // A better data structure would be an array of objects: [{text: '...', isCorrect: true}, ...]
-      // For now, we find the text that corresponds to the original correct index.
-      const originalCorrectOptionText = quizzes[category as keyof typeof quizzes]![slug as any]
-        .find((q: any) => q.question === currentQuestion.question)!
-        .options[
-          quizzes[category as keyof typeof quizzes]![slug as any]
-          .find((q: any) => q.question === currentQuestion.question)!.correctAnswer
-        ];
-
-      return _opt === originalCorrectOptionText;
-  });
+  const originalQuestionData = quizzes[category as keyof typeof quizzes]![slug as any]
+    .find((q: any) => q.question === currentQuestion.question)!;
+  const correctOptionText = originalQuestionData.options[originalQuestionData.correctAnswer];
   const newCorrectAnswerIndex = currentQuestion.options.indexOf(correctOptionText);
 
   return (
     <div className="container mx-auto max-w-2xl py-8">
-      <Card>
+      <Card className="glass-card">
         <CardHeader>
           <div className="mb-4">
-            <p className="text-sm text-muted-foreground">Question {currentQuestionIndex + 1} of {questions.length}</p>
-            <Progress value={(timeLeft / TIME_PER_QUESTION) * 100} className="mt-2 h-2" />
+            <div className="flex justify-between items-center mb-2">
+              <p className="text-sm text-muted-foreground">Question {currentQuestionIndex + 1} of {questions.length}</p>
+              <p className="text-sm font-mono font-bold text-secondary pulse-animation">{timeLeft}s</p>
+            </div>
+            <Progress value={(timeLeft / TIME_PER_QUESTION) * 100} className="h-2" />
           </div>
           <CardTitle className="text-2xl font-headline">{currentQuestion.question}</CardTitle>
         </CardHeader>
@@ -159,11 +158,12 @@ export default function QuizPage() {
             return (
               <Button
                 key={index}
-                className={cn("w-full justify-start h-auto py-3 text-left whitespace-normal", {
-                    'bg-green-100 dark:bg-green-900 border-green-500 text-green-800 dark:text-green-200 hover:bg-green-200': selectedAnswer !== null && isCorrectOption,
-                    'bg-red-100 dark:bg-red-900 border-red-500 text-red-800 dark:text-red-200 hover:bg-red-200': selectedAnswer !== null && isSelected && !isCorrect
+                className={cn("w-full justify-start h-auto py-3 text-left whitespace-normal text-base", {
+                    'bg-green-500/10 border-green-500 text-foreground hover:bg-green-500/20': selectedAnswer !== null && isCorrectOption,
+                    'bg-red-500/10 border-red-500 text-foreground hover:bg-red-500/20': selectedAnswer !== null && isSelected && !isCorrect,
+                    'hover:bg-accent/50 hover:border-secondary': selectedAnswer === null,
                 })}
-                variant={selectedAnswer === null ? "outline" : "secondary"}
+                variant={"outline"}
                 onClick={() => handleAnswerSelect(index)}
                 disabled={selectedAnswer !== null}
               >
@@ -180,7 +180,7 @@ export default function QuizPage() {
                     <h3 className="text-lg font-semibold">{isCorrect ? 'Correct!' : 'Incorrect'}</h3>
                 </div>
                 <p className="text-muted-foreground">{currentQuestion.explanation}</p>
-                <Button className="w-full" onClick={handleNextQuestion}>
+                <Button className="w-full neon-glow-button" onClick={handleNextQuestion}>
                     {currentQuestionIndex < questions.length - 1 ? 'Next Question' : 'Finish Quiz'}
                 </Button>
             </CardFooter>

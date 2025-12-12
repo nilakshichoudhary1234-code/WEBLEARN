@@ -22,17 +22,17 @@ export default function LeaderboardPage() {
         </p>
       </div>
 
-      <Card>
+      <Card className="glass-card">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Trophy className="h-5 w-5 text-primary" />
+          <CardTitle className="flex items-center gap-2 font-headline">
+            <Trophy className="h-5 w-5 text-secondary" />
             Top Performers
           </CardTitle>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
-              <TableRow>
+              <TableRow className="border-b-white/10">
                 <TableHead className="w-[100px]">Rank</TableHead>
                 <TableHead>Username</TableHead>
                 <TableHead className="text-right">Score</TableHead>
@@ -40,12 +40,20 @@ export default function LeaderboardPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {leaderboardData.map((entry) => (
-                <TableRow key={entry.rank}>
-                  <TableCell className="font-medium">{entry.rank}</TableCell>
-                  <TableCell>{entry.username}</TableCell>
-                  <TableCell className="text-right">{entry.score}</TableCell>
-                  <TableCell className="text-right">{entry.time}</TableCell>
+              {leaderboardData.map((entry, index) => (
+                <TableRow key={entry.rank} className="border-b-white/10 hover:bg-white/5">
+                  <TableCell className="font-medium text-lg">
+                     <span className={cn({
+                       'text-yellow-400': index === 0,
+                       'text-gray-400': index === 1,
+                       'text-yellow-600': index === 2,
+                     })}>
+                      {entry.rank}
+                     </span>
+                    </TableCell>
+                  <TableCell className="font-medium text-foreground">{entry.username}</TableCell>
+                  <TableCell className="text-right font-mono text-secondary">{entry.score}</TableCell>
+                  <TableCell className="text-right font-mono text-muted-foreground">{entry.time}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

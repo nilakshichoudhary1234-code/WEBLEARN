@@ -8,65 +8,65 @@ body {
 
 @layer base {
   :root {
-    --background: 222 84% 4%; /* Deep Navy */
-    --foreground: 210 40% 98%; /* Almost White */
+    --background: 0 0% 4%; /* #0A0A0A */
+    --foreground: 210 40% 98%;
 
-    --card: 222 84% 8%;
+    --card: 0 0% 10%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 84% 4%;
+    --popover: 0 0% 4%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 38 92% 50%; /* Bright Orange */
-    --primary-foreground: 222 84% 4%;
+    --primary: 278 100% 50%; /* #A100FF */
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 100% 56%; /* Electric Blue */
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 187 100% 50%; /* #00F0FF */
+    --secondary-foreground: 0 0% 4%;
 
-    --muted: 222 84% 12%;
-    --muted-foreground: 220 20% 65%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 240 5% 65%;
 
-    --accent: 38 92% 50%; /* Bright Orange for accent */
-    --accent-foreground: 222 84% 4%;
+    --accent: 0 0% 12%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 222 84% 12%;
-    --input: 222 84% 12%;
-    --ring: 38 92% 55%;
+    --border: 0 0% 15%;
+    --input: 0 0% 12%;
+    --ring: 187 100% 50%;
 
-    --radius: 0.75rem;
+    --radius: 1rem; /* 16px */
   }
 
   .dark {
-    --background: 222 84% 4%;
+    --background: 0 0% 4%;
     --foreground: 210 40% 98%;
 
-    --card: 222 84% 8%;
+    --card: 0 0% 10%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 84% 4%;
+    --popover: 0 0% 4%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 38 92% 50%;
-    --primary-foreground: 222 84% 4%;
+    --primary: 278 100% 50%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 100% 56%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 187 100% 50%;
+    --secondary-foreground: 0 0% 4%;
 
-    --muted: 222 84% 12%;
-    --muted-foreground: 220 20% 65%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 240 5% 65%;
 
-    --accent: 38 92% 50%;
-    --accent-foreground: 222 84% 4%;
+    --accent: 0 0% 12%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 222 84% 12%;
-    --input: 222 84% 12%;
-    --ring: 38 92% 55%;
+    --border: 0 0% 15%;
+    --input: 0 0% 12%;
+    --ring: 187 100% 50%;
   }
 }
 
@@ -76,23 +76,60 @@ body {
   }
   body {
     @apply bg-background text-foreground;
-     background:
-      radial-gradient(ellipse 80% 80% at 50% -20%, hsl(var(--secondary) / 0.2), transparent),
-      hsl(var(--background));
+  }
+}
+
+@layer components {
+  .neon-glow-button {
+      @apply relative inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+      background: linear-gradient(90deg, hsl(var(--secondary)), hsl(var(--primary)));
+      color: hsl(var(--secondary-foreground));
+      box-shadow: 0 0 5px hsl(var(--secondary)), 0 0 10px hsl(var(--secondary)), 0 0 15px hsl(var(--primary));
+  }
+  .neon-glow-button:hover {
+      box-shadow: 0 0 10px hsl(var(--secondary)), 0 0 20px hsl(var(--secondary)), 0 0 30px hsl(var(--primary));
+  }
+
+  .glass-card {
+    @apply rounded-xl border border-white/10 bg-white/5 backdrop-blur-lg;
   }
 }
 
 @layer utilities {
-  .glowing-underline {
-    @apply relative;
+  .pulse-animation {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
-  .glowing-underline::after {
-    content: '';
-    @apply absolute bottom-0 left-0 h-[2px] w-full scale-x-0 rounded-full bg-primary transition-transform duration-300 ease-out;
-    transform-origin: center;
-    box-shadow: 0 0 8px hsl(var(--primary));
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: .5;
+    }
   }
-  .glowing-underline:hover::after {
-    @apply scale-x-100;
+
+  .confetti-burst {
+    position: relative;
+  }
+
+  .confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: #f00;
+    opacity: 0;
+    animation: confetti-fall 2s ease-out forwards;
+  }
+
+  @keyframes confetti-fall {
+    0% {
+      transform: translateY(-100px) rotateZ(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(200px) rotateZ(360deg);
+      opacity: 0;
+    }
   }
 }

@@ -30,24 +30,24 @@ export default function Home() {
   const phoneImage = PlaceHolderImages.find((img) => img.id === 'phone-mockup');
 
   return (
-    <div className="flex min-h-screen w-full flex-col">
+    <div className="flex min-h-screen w-full flex-col bg-background">
       {/* Header */}
       <header className="absolute top-0 z-20 flex h-20 w-full items-center justify-between px-6 md:px-10">
         <Logo />
         <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
-          <Link href="/" className="glowing-underline text-foreground">
+          <Link href="/" className="text-foreground transition-colors hover:text-secondary">
             Home
           </Link>
-          <Link href="/auth" className="glowing-underline text-muted-foreground hover:text-foreground">
+          <Link href="/auth" className="text-muted-foreground transition-colors hover:text-secondary">
             Login
           </Link>
-          <Link href="/modules" className="glowing-underline text-muted-foreground hover:text-foreground">
+          <Link href="/modules" className="text-muted-foreground transition-colors hover:text-secondary">
             Modules
           </Link>
-          <Link href="/quiz/html/introduction-to-html" className="glowing-underline text-muted-foreground hover:text-foreground">
+          <Link href="/quiz/html/introduction-to-html" className="text-muted-foreground transition-colors hover:text-secondary">
             Quiz
           </Link>
-          <Link href="/leaderboard" className="glowing-underline text-muted-foreground hover:text-foreground">
+          <Link href="/leaderboard" className="text-muted-foreground transition-colors hover:text-secondary">
             Leaderboard
           </Link>
         </nav>
@@ -57,27 +57,27 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <main className="flex flex-1 flex-col items-center justify-center p-4 pt-40 text-center">
+      <main className="flex flex-1 flex-col items-center justify-center p-4 text-center pt-40">
         <div 
           className="absolute inset-0 -z-10 h-full w-full bg-background"
         >
           <div 
-            className="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[hsl(var(--primary)/0.3)] opacity-50 blur-[80px]"
+            className="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[hsl(var(--primary)/0.2)] opacity-50 blur-[80px]"
           ></div>
            <div 
-            className="absolute bottom-auto left-0 right-auto top-auto h-[500px] w-[500px] -translate-y-[10%] rounded-full bg-[hsl(var(--secondary)/0.3)] opacity-50 blur-[80px]"
+            className="absolute bottom-auto left-0 right-auto top-auto h-[500px] w-[500px] -translate-y-[10%] rounded-full bg-[hsl(var(--secondary)/0.2)] opacity-50 blur-[80px]"
           ></div>
         </div>
 
         <div className="relative z-10">
           <h1 className="font-headline text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
-            Debug Your Brain
+            CodeClash
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
             The Ultimate Web Dev Quiz
           </p>
           <div className="mt-10">
-            <Button size="lg" asChild className="bg-primary text-primary-foreground shadow-[0_0_20px_hsl(var(--primary)/0.6)] hover:bg-primary/90 hover:shadow-[0_0_30px_hsl(var(--primary)/0.7)] transition-shadow">
+            <Button size="lg" className="neon-glow-button" asChild>
               <Link href="/modules">
                 Start Learning
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -89,12 +89,12 @@ export default function Home() {
         {/* Feature Cards Section */}
         <div className="relative z-10 mt-24 grid w-full max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
           {modules.map((module) => (
-            <Card key={module.name} className="group relative overflow-hidden rounded-xl border-border/30 bg-card/60 backdrop-blur-lg transition-all duration-300 hover:border-primary/50 hover:shadow-[0_0_30px_hsl(var(--primary)/0.2)]">
-              <div className="absolute -inset-px rounded-xl opacity-0 transition-all duration-300 group-hover:opacity-100" style={{
+            <Card key={module.name} className="glass-card group relative overflow-hidden transition-all duration-300 hover:border-secondary/50 hover:shadow-[0_0_30px_hsl(var(--secondary)/0.3)]">
+               <div className="absolute -inset-px rounded-xl opacity-0 transition-all duration-300 group-hover:opacity-100" style={{
                 background: `radial-gradient(400px at 50% 100%, hsl(var(--primary) / 0.1), transparent 80%)`
               }}></div>
               <CardHeader className="relative">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-secondary/10 text-secondary transition-colors duration-300 group-hover:bg-secondary group-hover:text-secondary-foreground">
                   <module.icon className="h-8 w-8" />
                 </div>
                 <CardTitle className="text-center font-headline text-2xl text-foreground">
@@ -114,9 +114,9 @@ export default function Home() {
       {/* Play Anywhere Section */}
       <section className="w-full py-24 sm:py-32">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="relative overflow-hidden rounded-2xl bg-gray-900 shadow-2xl">
+          <div className="relative overflow-hidden rounded-2xl glass-card">
             <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
-             <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900 to-blue-950/50"></div>
+             <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-blue-950/50"></div>
             <div className="relative grid grid-cols-1 items-center gap-8 p-8 md:grid-cols-2 md:p-12 lg:gap-16">
               <div className="relative flex h-full min-h-[300px] w-full items-center justify-center md:min-h-[450px]">
                 {/* Devices with glows */}
@@ -160,7 +160,7 @@ export default function Home() {
                   Our platform is built mobile-first, allowing you to strengthen your development skills on the go. The experience is seamless across smartphone, tablet, and desktop.
                 </p>
                 <p className="text-lg text-gray-400">
-                  With a <span className="text-primary font-medium">responsive design</span> and smooth performance, you can pick up where you left off, no matter what device you're on. Your progress is always in sync.
+                  With a <span className="text-secondary font-medium">responsive design</span> and smooth performance, you can pick up where you left off, no matter what device you're on. Your progress is always in sync.
                 </p>
               </div>
             </div>
