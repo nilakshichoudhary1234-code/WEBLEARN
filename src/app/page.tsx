@@ -114,15 +114,10 @@ export default function Home() {
       {/* Play Anywhere Section */}
       <section className="w-full py-24 sm:py-32">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="relative overflow-hidden rounded-2xl glass-card">
-            <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
-             <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-blue-950/50"></div>
+          <div className="relative overflow-hidden rounded-2xl bg-slate-900/60 border border-slate-800 shadow-2xl">
+            <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]"></div>
             <div className="relative grid grid-cols-1 items-center gap-8 p-8 md:grid-cols-2 md:p-12 lg:gap-16">
               <div className="relative flex h-full min-h-[300px] w-full items-center justify-center md:min-h-[450px]">
-                {/* Devices with glows */}
-                <div className="absolute inset-0 -m-4 rounded-full bg-primary/20 blur-3xl"></div>
-                <div className="absolute inset-8 -m-4 rounded-full bg-secondary/20 blur-3xl"></div>
-                
                 {/* Laptop */}
                 {laptopImage && (
                   <div className="relative w-full max-w-lg" style={{ filter: 'drop-shadow(0 25px 25px rgb(0 0 0 / 0.3))' }}>
@@ -157,10 +152,10 @@ export default function Home() {
                   Play anywhere, anytime
                 </h2>
                 <p className="text-lg text-gray-300 md:text-xl">
-                  Our platform is built mobile-first, allowing you to strengthen your development skills on the go. The experience is seamless across smartphone, tablet, and desktop.
+                 Experience responsive design at its best—our quiz adapts seamlessly across devices for uninterrupted learning.
                 </p>
                 <p className="text-lg text-gray-400">
-                  With a <span className="text-secondary font-medium">responsive design</span> and smooth performance, you can pick up where you left off, no matter what device you're on. Your progress is always in sync.
+                  Master web dev concepts on laptop or phone, anytime you need a brain boost.
                 </p>
               </div>
             </div>
