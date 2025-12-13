@@ -217,11 +217,14 @@ export default function Home() {
                   Play anywhere, anytime
                 </h2>
                 <p className="text-lg text-gray-300 md:text-xl">
-                  Seamless experiences across all devices.
+                  Our mobile-first design ensures a seamless responsive experience—master web dev quizzes on laptop or phone for anytime brain debugging.
                 </p>
-                 <p className="text-lg text-gray-300 md:text-xl">
-                  Optimized for mobile, scaled for desktop.
-                </p>
+                <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                  <Badge variant="outline" className="text-sm border-secondary/30 bg-secondary/10 text-secondary">Responsive interface</Badge>
+                  <Badge variant="outline" className="text-sm border-secondary/30 bg-secondary/10 text-secondary">Consistent quiz experience</Badge>
+                  <Badge variant="outline" className="text-sm border-secondary/30 bg-secondary/10 text-secondary">Access from any device</Badge>
+                  <Badge variant="outline" className="text-sm border-secondary/30 bg-secondary/10 text-secondary">Learn on the go</Badge>
+                </div>
               </div>
             </div>
           </div>
