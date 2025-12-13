@@ -22,8 +22,8 @@ const fontCode = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'CodeClash: The Ultimate Web Dev Quiz',
-  description: 'Sharpen your web dev skills. One quiz at a time.',
+  title: 'WEBLEARN: The Ultimate Web Dev Quiz',
+  description: 'Sharpen your web dev skills with WEBLEARN. One quiz at a time.',
 };
 
 export default function RootLayout({
