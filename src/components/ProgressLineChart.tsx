@@ -14,7 +14,7 @@ import {
   CardTitle,
   CardDescription,
 } from '@/components/ui/card';
-import { progressData, ChartTooltipContent } from '@/lib/chart-data';
+import { progressData, ChartTooltipContent } from '@/lib/chart-data.tsx';
 
 export function ProgressLineChart() {
   return (

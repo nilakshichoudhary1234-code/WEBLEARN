@@ -8,7 +8,7 @@ import {
   CardTitle,
   CardDescription,
 } from '@/components/ui/card';
-import { moduleData, ChartTooltipContent } from '@/lib/chart-data';
+import { moduleData, ChartTooltipContent } from '@/lib/chart-data.tsx';
 
 const COLORS = ['#4CAF50', '#2196F3', '#FF9800'];
 

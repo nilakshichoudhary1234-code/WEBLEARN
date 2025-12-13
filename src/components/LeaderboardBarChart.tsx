@@ -14,7 +14,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { top10Data, ChartTooltipContent } from '@/lib/chart-data';
+import { top10Data, ChartTooltipContent } from '@/lib/chart-data.tsx';
 
 export function LeaderboardBarChart() {
   return (
