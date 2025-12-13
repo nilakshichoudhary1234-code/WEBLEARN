@@ -224,61 +224,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Leaderboard Section */}
-      <section className="w-full py-24 sm:py-32">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="relative overflow-hidden rounded-2xl border border-slate-800 bg-gradient-to-br from-purple-950/40 via-background to-background p-8 md:p-12" style={{
-            backgroundImage: 'linear-gradient(to bottom right, hsl(278 80% 10% / 0.4) 0%, hsl(0 0% 4%) 100%), url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.05\'/%3E%3C/svg%3E")'
-          }}>
-             <div className="absolute inset-0 -z-10 bg-grid-pattern opacity-10"></div>
-            <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-              <div className="space-y-6 text-center lg:text-left">
-                <h2 className="font-headline text-4xl font-bold tracking-tight text-white sm:text-5xl">
-                  Climb the Leaderboard
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                  Earn points by crushing HTML, CSS, and JavaScript quizzes. Compete on weekly leaderboards, unlock mastery badges, and claim your spot in the Hall of Fame.
-                </p>
-                <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-                  {featureBadges.map((badge, index) => (
-                    <Badge key={index} variant="outline" className="text-sm border-secondary/30 bg-secondary/10 text-secondary">
-                      <badge.icon className="mr-2 h-4 w-4" />
-                      {badge.text}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-              
-              <div className="relative space-y-4">
-                {leaderboardHighlights.map((player) => (
-                  <div key={player.rank} className="glass-card flex items-center gap-4 p-4 transition-all duration-300 hover:border-secondary/50 hover:shadow-[0_0_20px_hsl(var(--secondary)/0.2)]">
-                    <div className={cn("flex h-10 w-10 items-center justify-center rounded-full font-bold text-xl", {
-                      'bg-yellow-400/20 text-yellow-300 ring-2 ring-yellow-400/50': player.rank === 1,
-                      'bg-gray-400/20 text-gray-300': player.rank === 2,
-                      'bg-yellow-600/20 text-yellow-500': player.rank === 3,
-                    })}>
-                      {player.rank}
-                    </div>
-                    <Avatar>
-                       <AvatarImage src={`https://i.pravatar.cc/40?u=${player.username}`} alt={player.username} />
-                      <AvatarFallback>{player.username.charAt(0).toUpperCase()}</AvatarFallback>
-                    </Avatar>
-                    <div className="flex-grow">
-                      <p className="font-medium text-foreground">{player.username}</p>
-                      <Progress value={player.progress} className="h-1.5 mt-1" />
-                    </div>
-                    <div className="font-mono text-lg font-bold text-secondary">
-                      {player.score}pts
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ Section */}
       <section className="w-full py-24 sm:py-32">
         <div className="container mx-auto max-w-4xl px-4 md:px-6">
