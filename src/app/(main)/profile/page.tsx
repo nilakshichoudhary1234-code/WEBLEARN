@@ -91,8 +91,8 @@ export default function ProfilePage() {
         <CardHeader className="flex flex-col md:flex-row items-start md:items-center gap-6">
           <div className="relative">
             <Avatar className="h-24 w-24 border-4 border-secondary/50">
-              <AvatarImage src={user.avatar} alt={user.displayName} />
-              <AvatarFallback>{user.displayName.charAt(0)}</AvatarFallback>
+              
+              <AvatarFallback>{displayName.charAt(0)}</AvatarFallback>
             </Avatar>
             <Button size="icon" className="absolute -bottom-2 -right-2 h-8 w-8 rounded-full">
               ✏️
