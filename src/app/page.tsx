@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Logo } from '@/components/Logo';
@@ -96,9 +97,6 @@ export default function Home() {
           <Link href="/" className="text-foreground transition-colors hover:text-secondary">
             Home
           </Link>
-          <Link href="/auth" className="text-muted-foreground transition-colors hover:text-secondary">
-            Login
-          </Link>
           <Link href="/modules" className="text-muted-foreground transition-colors hover:text-secondary">
             Modules
           </Link>
@@ -107,7 +105,7 @@ export default function Home() {
           </Link>
         </nav>
         <Button variant="ghost" asChild>
-          <Link href="/auth">Get Started</Link>
+          <Link href="/auth">Login</Link>
         </Button>
       </header>
 
@@ -131,11 +129,16 @@ export default function Home() {
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
             The Ultimate Web Dev Quiz
           </p>
-          <div className="mt-10">
+          <div className="mt-10 flex justify-center gap-4">
             <Button size="lg" className="neon-glow-button" asChild>
-              <Link href="/modules">
-                Start Learning
+              <Link href="/auth">
+                Login & Get Started
                 <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+             <Button size="lg" variant="outline" asChild>
+              <Link href="/modules">
+                Browse Modules
               </Link>
             </Button>
           </div>
@@ -311,3 +314,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
