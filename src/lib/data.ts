@@ -34,7 +34,7 @@ export const contentData: Category[] = [
     topics: [
       // --- Basic Level ---
       {
-        slug: 'html-introduction',
+        slug: 'introduction-to-html',
         title: 'HTML Introduction',
         description: 'Learn what HTML is and its role in web pages.',
         content: 'HTML (HyperText Markup Language) is the standard markup language for creating web pages. It describes the structure of a web page and consists of a series of elements, which tell the browser how to display the content. At its core, HTML is about defining the meaning and structure of your content, a concept known as semantics. For instance, is this text a heading, a paragraph, a list, or something else? HTML provides the tags to make these distinctions clear.',
@@ -798,7 +798,7 @@ type Quizzes = {
 
 export const quizzes: Quizzes = {
   html: {
-    'html-introduction': [
+    'introduction-to-html': [
       {
         question: "What does HTML stand for?",
         options: ["Hyperlinks and Text Markup Language", "Hyper Text Markup Language", "Home Tool Markup Language", "Hyperlinking Text Management Language"],
@@ -806,243 +806,93 @@ export const quizzes: Quizzes = {
         explanation: "HTML stands for Hyper Text Markup Language. It's the standard for creating web pages."
       },
       {
-        question: "What is the primary purpose of HTML?",
-        options: ["To style the web page", "To define the structure and meaning of web content", "To add interactivity to the web page", "To manage server-side logic"],
+        question: "Who is making the Web standards?",
+        options: ["Google", "The World Wide Web Consortium", "Microsoft", "Mozilla"],
         correctAnswer: 1,
-        explanation: "The main role of HTML is to structure content semantically, telling the browser what each part of the content represents (e.g., a heading, a paragraph, a link)."
-      }
-    ],
-    'html-editors': [
+        explanation: "The World Wide Web Consortium (W3C) is the main international standards organization for the World Wide Web."
+      },
       {
-        question: "Which of the following is a professional code editor?",
-        options: ["Notepad", "Microsoft Word", "VS Code", "Gmail"],
-        correctAnswer: 2,
-        explanation: "VS Code is a popular, free, and powerful code editor developed by Microsoft, widely used for web development."
+        question: "Choose the correct HTML element for the largest heading:",
+        options: ["<h6>", "<h1>", "<head>", "<heading>"],
+        correctAnswer: 1,
+        explanation: "<h1> defines the most important heading. <h6> defines the least important heading."
+      },
+      {
+        question: "What is the correct HTML element for inserting a line break?",
+        options: ["<br>", "<break>", "<lb>", "<linebreak>"],
+        correctAnswer: 0,
+        explanation: "The <br> tag is an empty tag, which means that it has no end tag."
+      },
+      {
+        question: "What is the correct HTML for adding a background color?",
+        options: ['<body bg="yellow">', '<body style="background-color:yellow;">', '<background>yellow</background>', '<body background="yellow">'],
+        correctAnswer: 1,
+        explanation: "The correct way to add a background color in HTML is by using the CSS `background-color` property inside a `style` attribute."
       }
     ],
     'html-basic': [
-      {
-        question: "What is the purpose of the `<!DOCTYPE html>` declaration?",
-        options: ["It defines a variable.", "It tells the browser that the document is an HTML5 document.", "It creates a comment.", "It links to a stylesheet."],
-        correctAnswer: 1,
-        explanation: "The `<!DOCTYPE html>` declaration is an instruction to the web browser about what version of HTML the page is written in. This ensures the page is rendered in standards mode."
-      }
-    ],
-    'html-elements': [
-      {
-        question: "Which of the following is an example of an empty or void element?",
-        options: ["<p>", "<img>", "<div>", "<span>"],
-        correctAnswer: 1,
-        explanation: "Empty elements are elements that do not have a closing tag or content. `<img>`, `<br>`, and `<hr>` are common examples."
-      }
+        {
+            question: "Which of these elements are all `<table>` elements?",
+            options: ["<table><head><tfoot>", "<thead><body><tr>", "<table><tr><td>", "<table><tr><tt>"],
+            correctAnswer: 2,
+            explanation: "A standard HTML table is structured with `<table>`, `<tr>` (table row), and `<td>` (table data/cell) elements. `<th>` is used for table headers."
+        },
+        {
+            question: "How can you make a numbered list?",
+            options: ["<ol>", "<ul>", "<dl>", "<list>"],
+            correctAnswer: 0,
+            explanation: "The `<ol>` tag defines an ordered list. The list items inside will be marked with numbers by default."
+        },
+        {
+            question: "How can you make a bulleted list?",
+            options: ["<ol>", "<ul>", "<dl>", "<list>"],
+            correctAnswer: 1,
+            explanation: "The `<ul>` tag defines an unordered list. The list items inside will be marked with bullets by default."
+        },
+        {
+            question: "What is the correct HTML for creating a hyperlink?",
+            options: ["<a url='http://www.example.com'>example.com</a>", "<a>http://www.example.com</a>", "<a href='http://www.example.com'>example.com</a>", "<a link='http://www.example.com'>example.com</a>"],
+            correctAnswer: 2,
+            explanation: "The `<a>` (anchor) tag is used to define a hyperlink, and the `href` attribute specifies the link's destination."
+        },
+        {
+            question: "Which character is used to indicate an end tag?",
+            options: ["/", "<", "*", "^"],
+            correctAnswer: 0,
+            explanation: "An end tag is written like a start tag, but with a forward slash `/` inserted before the element name."
+        }
     ],
     'html-attributes': [
       {
-        question: "Which attribute specifies the URL of the page a link goes to?",
-        options: ["src", "link", "url", "href"],
-        correctAnswer: 3,
-        explanation: "The `href` attribute is used in an `<a>` tag to specify the destination of the hyperlink."
-      }
-    ],
-    'html-headings': [
-      {
-        question: "For SEO and accessibility, how many `<h1>` elements should a page ideally have?",
-        options: ["As many as you want", "Zero", "Exactly one", "At least two"],
+        question: "The `href` attribute in an `<a>` tag specifies what?",
+        options: ["The link's text", "The link's style", "The destination URL of the link", "The target frame of the link"],
         correctAnswer: 2,
-        explanation: "It's a best practice to have only one `<h1>` element per page, representing the main title or subject of that page."
-      }
-    ],
-    'html-paragraphs': [
+        explanation: "The `href` attribute is required for an anchor to be a hyperlink, and it specifies the URL of the page the link goes to."
+      },
       {
-        question: "Which element is the correct choice for defining a paragraph?",
-        options: ["<paragraph>", "<para>", "<p>", "<pg>"],
+        question: "The `src` attribute in an `<img>` tag specifies what?",
+        options: ["The image's size", "The path to the image to be displayed", "The image's caption", "The script to run when the image is clicked"],
+        correctAnswer: 1,
+        explanation: "The `src` attribute stands for 'source' and contains the path to the image you want to embed."
+      },
+      {
+        question: "What is the purpose of the `alt` attribute on an `<img>` tag?",
+        options: ["To provide an alternative title for the image", "To provide alternative text if the image cannot be displayed", "To specify the alignment of the image", "To link the image to another resource"],
+        correctAnswer: 1,
+        explanation: "The `alt` attribute provides alternative information for an image if a user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader)."
+      },
+      {
+        question: "The `style` attribute is used to provide what kind of styling?",
+        options: ["External CSS", "Internal CSS", "Inline CSS", "Global CSS"],
         correctAnswer: 2,
-        explanation: "The `<p>` element is the correct semantic tag for defining a paragraph of text."
-      }
-    ],
-    'html-styles': [
+        explanation: "The `style` attribute is used to apply CSS rules directly to the element it's on, which is known as inline styling."
+      },
       {
-        question: "Is using the `style` attribute (inline styles) generally considered a best practice for large websites?",
-        options: ["Yes, it's the most efficient way", "No, it makes maintenance difficult and mixes content with presentation", "It does not matter", "Yes, it overrides all other styles"],
+        question: "Which attribute is used to provide an advisory title for an element, often shown as a tooltip?",
+        options: ["tooltip", "title", "info", "alt"],
         correctAnswer: 1,
-        explanation: "While inline styles work, they are hard to maintain. External stylesheets are preferred because they separate structure (HTML) from presentation (CSS), making the code cleaner and easier to manage."
-      }
-    ],
-    'html-text-formatting': [
-      {
-        question: "What is the semantic difference between `<b>` and `<strong>`?",
-        options: ["There is no difference", "`<b>` is for bold, `<strong>` is for important", "`<strong>` has more weight", "`<b>` is newer than `<strong>`"],
-        correctAnswer: 1,
-        explanation: "Both tags render text as bold by default, but `<strong>` indicates that the text has strong importance, significance, or urgency. Screen readers may use a different tone of voice for it."
-      }
-    ],
-    'html-comments': [
-      {
-        question: "How do you correctly write a multi-line comment in HTML?",
-        options: ["<!-- First line\nSecond line -->", "/* First line\nSecond line */", "// First line\n// Second line", "You cannot have multi-line comments"],
-        correctAnswer: 0,
-        explanation: "An HTML comment starts with `<!--` and ends with `-->`. Anything between these markers, including line breaks, is part of the comment."
-      }
-    ],
-    'html-links': [
-      {
-        question: 'How do you create a link that opens in a new tab?',
-        options: ['<a href="..." target="_blank">', '<a href="..." newtab>', '<a href="..." target="_new">', '<a href="..." open="new">'],
-        correctAnswer: 0,
-        explanation: 'Using `target="_blank"` instructs the browser to open the linked document in a new window or tab. It\'s important to also add `rel="noopener noreferrer"` for security.'
-      }
-    ],
-    'html-images': [
-      {
-        question: "Why is the `alt` attribute on an `<img>` tag important?",
-        options: ["It provides a caption that appears below the image.", "It is required for the image to load.", "It provides alternative text for screen readers and is displayed if the image fails to load.", "It sets the alignment of the image."],
-        correctAnswer: 2,
-        explanation: "The `alt` attribute is crucial for web accessibility, providing a textual description of the image for users who cannot see it."
-      }
-    ],
-    'html-tables': [
-      {
-        question: "Which elements are used to semantically structure a table?",
-        options: ["<header>, <body>, <footer>", "<thead>, <tbody>, <tfoot>", "<head>, <main>, <foot>", "<top>, <middle>, <bottom>"],
-        correctAnswer: 1,
-        explanation: "Using `<thead>`, `<tbody>`, and `<tfoot>` helps structure the table, which can be useful for styling and for accessibility tools."
-      }
-    ],
-    'html-lists': [
-      {
-        question: "Which tag is used for a single term in a description list?",
-        options: ["<item>", "<li>", "<dd>", "<dt>"],
-        correctAnswer: 3,
-        explanation: "In a `<dl>` (description list), `<dt>` stands for 'description term' and `<dd>` stands for 'description details'."
-      }
-    ],
-    'html-block-and-inline': [
-      {
-        question: "Can you set a `width` and `height` on an inline element like a `<span>`?",
-        options: ["Yes, without any changes", "No, width and height properties have no effect on non-replaced inline elements", "Only if you use JavaScript", "Only `width` works"],
-        correctAnswer: 1,
-        explanation: "By default, inline elements only take up as much space as their content requires. To apply dimensions, you must change its display property, for example to `inline-block` or `block`."
-      }
-    ],
-    'html-classes-and-id': [
-      {
-        question: "How many times can a specific ID be used in an HTML document?",
-        options: ["As many times as needed", "Twice", "Once", "Ten times"],
-        correctAnswer: 2,
-        explanation: "The value of an ID attribute MUST be unique within the HTML document. It is used to target a single, specific element."
-      }
-    ],
-    'html-iframes': [
-      {
-        question: "What is a potential security risk of using iframes?",
-        options: ["They can slow down your website.", "They can be used for 'clickjacking' attacks if not secured properly.", "They are not supported by modern browsers.", "They can only display insecure content."],
-        correctAnswer: 1,
-        explanation: "Clickjacking is a malicious technique of tricking a user into clicking on something different from what the user perceives. The `sandbox` attribute and `X-Frame-Options` header can help prevent this."
-      }
-    ],
-    'html-forms': [
-      {
-        question: 'What is the purpose of the `name` attribute on an `<input>` element?',
-        options: ["It is a unique identifier for the element.", "It provides the label text for the input.", "It is sent to the server along with the input's value to identify the data.", "It sets the default value of the input."],
-        correctAnswer: 2,
-        explanation: "When a form is submitted, the data is sent as name-value pairs. The `name` attribute provides the key for the submitted data."
-      }
-    ],
-    'html-form-elements': [
-      {
-        question: "What is the purpose of the `<label>` element in a form?",
-        options: ["To provide a caption for the form.", "To visually style the input.", "To associate a text label with a form control, improving accessibility.", "To create a multi-line text input."],
-        correctAnswer: 2,
-        explanation: "A `<label>` is programmatically associated with an input via the `for` attribute. This allows users to click the label to focus the input and helps screen readers announce the purpose of the input."
-      }
-    ],
-    'html-head': [
-      {
-        question: "Which `<meta>` tag is essential for responsive web design?",
-        options: ['<meta name="description" ...>', '<meta charset="UTF-8">', '<meta name="viewport" ...>', '<meta name="keywords" ...>'],
-        correctAnswer: 2,
-        explanation: 'The viewport meta tag (`<meta name="viewport" content="width=device-width, initial-scale=1.0">`) tells the browser how to control the page\'s dimensions and scaling on different devices.'
-      }
-    ],
-    'html-layout-elements': [
-      {
-        question: "Which HTML5 element should contain the primary navigation links for a site?",
-        options: ["<header>", "<nav>", "<menu>", "<links>"],
-        correctAnswer: 1,
-        explanation: "The `<nav>` element is specifically intended for major blocks of navigation links."
-      }
-    ],
-    'html-responsive': [
-      {
-        question: "Is responsive design primarily an HTML or CSS concern?",
-        options: ["HTML only", "CSS only", "Both, but mostly handled by CSS with a crucial meta tag in HTML", "JavaScript only"],
-        correctAnswer: 2,
-        explanation: "Responsive design requires the viewport meta tag in HTML, but the actual layout changes and adaptations are almost entirely controlled by CSS using techniques like flexible grids, flexible images, and media queries."
-      }
-    ],
-    'html-semantic-elements': [
-      {
-        question: "Which element would be best for grouping an image and its caption?",
-        options: ["<figure>", "<div>", "<image>", "<section>"],
-        correctAnswer: 0,
-        explanation: "The `<figure>` element is the semantically correct way to encapsulate media like an image, which can then be associated with a `<figcaption>`."
-      }
-    ],
-    'html-multimedia': [
-      {
-        question: "What is the purpose of the `<source>` element inside a `<video>` tag?",
-        options: ["To provide a text transcript.", "To provide multiple video file formats for better browser compatibility.", "To set the poster image.", "To define subtitles."],
-        correctAnswer: 1,
-        explanation: "Because not all browsers support the same video formats, you can provide multiple `<source>` elements, and the browser will use the first one it supports."
-      }
-    ],
-    'html-apis': [
-      {
-        question: "Which Web Storage API object stores data only for the current browser session?",
-        options: ["sessionStorage", "localStorage", "globalStorage", "cookieStorage"],
-        correctAnswer: 0,
-        explanation: "`sessionStorage` maintains a separate storage area for each given origin that's available for the duration of the page session (as long as the browser tab is open)."
-      }
-    ],
-    'html-graphics': [
-      {
-        question: "Which graphics technology is generally better for accessibility and SEO?",
-        options: ["Canvas, because it's scripted.", "SVG, because it's XML-based and its content can be indexed and accessed by screen readers.", "Both are equal.", "Neither are accessible."],
-        correctAnswer: 1,
-        explanation: "SVG is an XML-based format. Its content is part of the DOM, which means text inside an SVG is findable, selectable, and accessible to assistive technologies. Canvas is a pixel-based drawing surface and is not inherently accessible."
-      }
-    ],
-    'html-web-storage': [
-      {
-        question: "Is data stored in `localStorage` and `sessionStorage` sent to the server with every HTTP request?",
-        options: ["Yes, always", "No, it is purely client-side storage", "Only `localStorage` is sent", "Only if the user allows it"],
-        correctAnswer: 1,
-        explanation: "Unlike cookies, data in Web Storage is not automatically sent to the server with every request. It is only accessible via JavaScript on the client side, which makes it more secure and efficient for storing larger amounts of data."
-      }
-    ],
-    'html-web-workers': [
-      {
-        question: "Can a Web Worker directly manipulate the DOM (e.g., change an element's color)?",
-        options: ["Yes, they have full access to the DOM.", "No, Web Workers run in a separate thread and do not have access to the `document` object.", "Only if given special permission.", "Yes, but it's not recommended."],
-        correctAnswer: 1,
-        explanation: "Web Workers operate in a different global context that is separate from the main window. They cannot access the DOM. To make changes to the UI, a worker must send a message back to the main script, which then performs the DOM manipulation."
-      }
-    ],
-    'html-accessibility': [
-      {
-        question: "What does ARIA stand for?",
-        options: ["Accessible Rich Internet Applications", "Advanced Responsive Internet Architecture", "Accessible Reading Interface Attributes", "Automated Reader Interaction API"],
-        correctAnswer: 0,
-        explanation: "ARIA is a set of attributes you can add to HTML elements to help make web content more accessible, especially for dynamic content and advanced user interface controls."
-      }
-    ],
-    'html-best-practices': [
-      {
-        question: "Why is it important to validate your HTML?",
-        options: ["To make your website load faster", "To ensure it works in future browsers and to catch syntax errors", "To get a higher score on Google", "It's not important"],
-        correctAnswer: 1,
-        explanation: "Validating your HTML using a tool like the W3C Markup Validation Service helps you find errors, such as missing closing tags or improperly nested elements, which can cause rendering issues and ensure your site is more future-proof."
-      }
+        explanation: "The `title` attribute specifies extra information about an element. The information is most often shown as a tooltip text when the mouse moves over the element."
+      },
     ],
   },
   css: {
@@ -1052,481 +902,193 @@ export const quizzes: Quizzes = {
         options: ['Creative Style Sheets', 'Cascading Style Sheets', 'Computer Style Sheets', 'Colorful Style Sheets'],
         correctAnswer: 1,
         explanation: 'CSS stands for Cascading Style Sheets, and it is used to style and lay out web pages.'
-      }
+      },
+      {
+        question: 'What is the correct HTML for referring to an external style sheet?',
+        options: ['<stylesheet>mystyle.css</stylesheet>', '<style src="mystyle.css">', '<link rel="stylesheet" type="text/css" href="mystyle.css">', '<style link="mystyle.css">'],
+        correctAnswer: 2,
+        explanation: 'The `<link>` tag is used to link to external style sheets, with the `rel` attribute set to "stylesheet" and `href` pointing to the CSS file.'
+      },
+       {
+        question: 'Where in an HTML document is the correct place to refer to an external style sheet?',
+        options: ['In the <body> section', 'At the end of the document', 'In the <head> section', 'In the <footer> section'],
+        correctAnswer: 2,
+        explanation: 'External style sheets should be linked within the `<head>` section of the HTML document to ensure styles are loaded before the content is rendered.'
+      },
+       {
+        question: 'Which HTML tag is used to define an internal style sheet?',
+        options: ['<css>', '<script>', '<style>', '<link>'],
+        correctAnswer: 2,
+        explanation: 'The `<style>` tag is used to embed CSS directly within an HTML document, usually inside the `<head>` section.'
+      },
+      {
+        question: 'Which HTML attribute is used to define inline styles?',
+        options: ['style', 'class', 'styles', 'font'],
+        correctAnswer: 0,
+        explanation: 'The `style` attribute is used to apply CSS declarations directly to a single HTML element.'
+      },
     ],
     'css-syntax': [
       {
-        question: 'A CSS rule consists of a selector and what else?',
-        options: ['A property', 'A value', 'A declaration block', 'A comment'],
+        question: 'Which property is used to change the background color?',
+        options: ['color', 'bgcolor', 'background-color', 'background'],
         correctAnswer: 2,
-        explanation: 'A CSS rule is made of a selector and a declaration block, which contains one or more declarations (property-value pairs).'
-      }
-    ],
-    'css-selectors': [
+        explanation: 'The `background-color` property specifically sets the background color of an element.'
+      },
       {
-        question: 'Which character is used to select an element by its ID?',
-        options: ['.', '&', '*', '#'],
+        question: 'How do you add a background color for all <h1> elements?',
+        options: ['h1 {background-color:#FFFFFF;}', 'all.h1 {background-color:#FFFFFF;}', 'h1.all {background-color:#FFFFFF;}', 'h1 {bgcolor:#FFFFFF;}'],
+        correctAnswer: 0,
+        explanation: 'You use the element selector `h1` followed by a declaration block `{}` containing the `background-color` property and its value.'
+      },
+       {
+        question: 'Which CSS property is used to change the text color of an element?',
+        options: ['fgcolor', 'text-color', 'font-color', 'color'],
         correctAnswer: 3,
-        explanation: 'The hash (#) symbol is used to select an element with a specific ID, for example: `#myId`.'
-      }
-    ],
-    'css-how-to': [
+        explanation: 'The `color` property is used to set the color of the text content of an element.'
+      },
       {
-        question: 'Which method of applying CSS is generally considered best practice?',
-        options: ['External style sheet', 'Internal style sheet', 'Inline style', 'All are equal'],
+        question: 'Which property is used to change the font of an element?',
+        options: ['font-family', 'font-style', 'font-weight', 'font'],
         correctAnswer: 0,
-        explanation: 'External stylesheets are preferred because they separate concerns (structure vs. presentation), allow for reusability across multiple pages, and are easier to maintain.'
-      }
-    ],
-    'css-comments': [
+        explanation: 'The `font-family` property is used to specify a prioritized list of fonts to be used to render an element.'
+      },
       {
-        question: 'How do you insert a comment in a CSS file?',
-        options: ['// this is a comment', '<!-- this is a comment -->', "' this is a comment", '/* this is a comment */'],
-        correctAnswer: 3,
-        explanation: 'CSS comments start with `/*` and end with `*/` and can span multiple lines.'
-      }
-    ],
-    'css-colors': [
-      {
-        question: 'Which of the following is the HEX code for pure black?',
-        options: ['#000000', '#ffffff', '#111111', '#eeeeee'],
+        question: 'How do you make the text bold?',
+        options: ['font-weight:bold;', 'font:bold;', 'style:bold;', 'text-style:bold;'],
         correctAnswer: 0,
-        explanation: '`#000000` represents zero intensity for red, green, and blue, which creates black. `#ffffff` is white.'
-      }
-    ],
-    'css-backgrounds': [
-      {
-        question: 'How do you make a background image cover the entire container without losing its aspect ratio?',
-        options: ['`background-size: contain;`', '`background-size: 100% 100%;`', '`background-size: cover;`', '`background-fit: cover;`'],
-        correctAnswer: 2,
-        explanation: '`background-size: cover;` scales the image to be as large as possible so that the background area is completely covered, while maintaining the image\'s aspect ratio. This may crop the image.'
-      }
-    ],
-    'css-borders': [
-      {
-        question: 'What does `border-radius` do?',
-        options: ['Changes the color of the border.', 'Sets the thickness of the border.', 'Adds rounded corners to an element\'s border.', 'Makes the border a radial gradient.'],
-        correctAnswer: 2,
-        explanation: 'The `border-radius` property is used to add rounded corners to an element.'
-      }
-    ],
-    'css-margins': [
-      {
-        question: 'What is "margin collapsing"?',
-        options: ['When padding and margin cancel each other out.', 'When the vertical margins of two adjacent block elements merge into a single, larger margin.', 'When you set margin to zero.', 'A browser bug that should be avoided.'],
-        correctAnswer: 1,
-        explanation: 'Margin collapsing is a defined behavior where the top and bottom margins of adjacent block elements collapse into a single margin whose size is the larger of the two.'
-      }
-    ],
-    'css-padding': [
-      {
-        question: 'If you write `padding: 20px;`, where is the padding applied?',
-        options: ['Only to the top', 'Only to the left and right', 'To the top and bottom', 'To all four sides'],
-        correctAnswer: 3,
-        explanation: 'A single value for `padding` applies that spacing to all four sides of the element: top, right, bottom, and left.'
-      }
-    ],
-    'css-box-model': [
-      {
-        question: 'What does `box-sizing: border-box;` do?',
-        options: ['It removes the border and padding.', 'It includes padding and border in the element\'s total width and height.', 'It makes the box model visible.', 'It only allows a box to be a border.'],
-        correctAnswer: 1,
-        explanation: '`box-sizing: border-box;` tells the browser that the `width` and `height` properties should include the content, padding, and border, which makes layout calculations more intuitive.'
-      }
-    ],
-    'css-text-and-fonts': [
-      {
-        question: 'Which property is used to set the font for an element?',
-        options: ['font-style', 'font-family', 'font-type', 'text-font'],
-        correctAnswer: 1,
-        explanation: 'The `font-family` property specifies the font for an element as a prioritized list of font family names and/or generic family names.'
-      }
-    ],
-    'css-links': [
-      {
-        question: 'Which pseudo-class is used to style a link that has been visited?',
-        options: [':focus', ':visited', ':link', ':hover'],
-        correctAnswer: 1,
-        explanation: 'The `:visited` pseudo-class applies to links that the user has already visited.'
-      }
-    ],
-    'css-lists': [
-      {
-        question: 'How do you remove the bullets from an unordered list?',
-        options: ['`list-style-type: none;`', '`bullets: none;`', '`list-style: hidden;`', '`marker: none;`'],
-        correctAnswer: 0,
-        explanation: 'Setting `list-style-type` to `none` will remove the default list markers, such as bullets or numbers.'
-      }
-    ],
-    'css-tables': [
-      {
-        question: 'What does `border-collapse: collapse;` do for a table?',
-        options: ['It hides all borders.', 'It makes all borders dashed.', 'It merges adjacent cell borders into a single border.', 'It makes the table collapse into a single line.'],
-        correctAnswer: 2,
-        explanation: 'The `border-collapse` property sets whether table borders should be collapsed into a single border or be separated as in standard HTML.'
-      }
-    ],
-    'css-display': [
-      {
-        question: 'What is the main characteristic of `display: inline-block;`?',
-        options: ['It is the same as `display: block;`', 'It is the same as `display: inline;`', 'It behaves like an inline element but you can set width and height on it.', 'It behaves like a block element but flows with text.'],
-        correctAnswer: 2,
-        explanation: '`display: inline-block;` is a hybrid. It flows with surrounding content like an inline element, but you can apply dimensions and vertical margins/padding like a block element.'
-      }
-    ],
-    'css-position': [
-      {
-        question: 'An element with `position: fixed;` is positioned relative to what?',
-        options: ['Its normal position', 'Its nearest positioned ancestor', 'The browser viewport', 'The `<html>` element'],
-        correctAnswer: 2,
-        explanation: 'A fixed position element is positioned relative to the viewport, which means it always stays in the same place even if the page is scrolled.'
-      }
-    ],
-    'css-z-index': [
-      {
-        question: '`z-index` only works on elements that have which `position` values?',
-        options: ['`static` only', '`relative`, `absolute`, `fixed`, or `sticky`', '`block` or `inline-block`', 'It works on all elements.'],
-        correctAnswer: 1,
-        explanation: 'The `z-index` property has no effect on elements with the default `position: static`. It only applies to positioned elements.'
-      }
-    ],
-    'css-combinators': [
-      {
-        question: 'What does the selector `h2 ~ p` target?',
-        options: ['All `<p>` elements inside an `<h2>`', 'The first `<p>` element immediately after an `<h2>`', 'All `<p>` elements that are preceded by an `<h2>` at the same sibling level', 'All `<p>` elements that are children of an `<h2>`'],
-        correctAnswer: 2,
-        explanation: 'The `~` is the general sibling combinator. It selects all `<p>` elements that are siblings of an `<h2>` and come after it.'
-      }
-    ],
-    'css-pseudo-classes': [
-      {
-        question: 'What does the `:nth-child(odd)` pseudo-class select?',
-        options: ['Every odd-numbered element (1st, 3rd, 5th, etc.) among its siblings.', 'Every element with an odd `id`.', 'The third element only.', 'The first and last elements.'],
-        correctAnswer: 0,
-        explanation: '`:nth-child(odd)` selects every sibling element that is the first, third, fifth (and so on) child of its parent. It is great for zebra-striping tables.'
-      }
-    ],
-    'css-pseudo-elements': [
-      {
-        question: 'Which property is required for `::before` and `::after` pseudo-elements to be visible?',
-        options: ['`display`', '`position`', '`content`', '`color`'],
-        correctAnswer: 2,
-        explanation: 'For a pseudo-element like `::before` or `::after` to be rendered, you must declare a `content` property, even if it\'s just an empty string (`content: ""`).'
-      }
+        explanation: 'The `font-weight` property is used to set the weight (or boldness) of the font.'
+      },
     ],
     'css-flexbox': [
-      {
-        question: 'How do you center a single flex item both horizontally and vertically within its container?',
-        options: ['`text-align: center;` and `vertical-align: middle;`', '`margin: auto;` on the item', '`justify-content: center;` and `align-items: center;` on the container', '`position: absolute;`'],
-        correctAnswer: 2,
-        explanation: 'For a flex container, setting `justify-content: center;` (for the main axis) and `align-items: center;` (for the cross axis) is the standard way to perfectly center its children.'
-      }
-    ],
-    'css-grid': [
-      {
-        question: 'What does `grid-template-columns: 1fr 2fr;` do?',
-        options: ['Creates two columns, the second being twice as wide as the first.', 'Creates two columns of equal width.', 'Creates one column that is 1/2 the width of the container.', 'This is invalid syntax.'],
-        correctAnswer: 0,
-        explanation: 'The `fr` unit represents a fraction of the available space. This rule allocates 1 part of the space to the first column and 2 parts to the second, making the second column twice the size of the first.'
-      }
-    ],
-    'css-responsive-design-media-queries': [
-      {
-        question: 'How would you apply a style ONLY to screens that are 800px wide or MORE?',
-        options: ['`@media (min-width: 800px) { ... }`', '`@media (max-width: 800px) { ... }`', '`@media (width: 800px) { ... }`', '`@media screen and (width >= 800px) { ... }`'],
-        correctAnswer: 0,
-        explanation: 'The `min-width` media feature is used to apply styles for viewports from a certain width and up. This is a core part of a mobile-first approach.'
-      }
-    ],
-    'css-variables': [
-      {
-        question: 'How do you declare a CSS variable named `main-bg-color`?',
-        options: ['`$main-bg-color: blue;`', '`let --main-bg-color: blue;`', '`--main-bg-color: blue;`', '`var main-bg-color = blue;`'],
-        correctAnswer: 2,
-        explanation: 'CSS variables (custom properties) must start with two hyphens (`--`) and are typically declared within a selector like `:root` to be global.'
-      }
-    ],
-    'css-transforms': [
-      {
-        question: 'Which `transform` function moves an element horizontally and vertically?',
-        options: ['`scale()`', '`translate()`', '`skew()`', '`move()`'],
-        correctAnswer: 1,
-        explanation: 'The `translate(x, y)` function moves an element from its current position according to the given x and y values.'
-      }
-    ],
-    'css-transitions': [
-      {
-        question: 'What is a common trigger for a CSS transition?',
-        options: ['Loading the page.', 'A change in state, such as `:hover` or adding a class with JavaScript.', 'A user clicking a button.', 'The animation ending.'],
-        correctAnswer: 1,
-        explanation: 'Transitions are triggered when a CSS property they are "watching" changes. This most commonly happens when a pseudo-class like `:hover` becomes active or when a JavaScript event adds or removes a CSS class.'
-      }
-    ],
-    'css-animations': [
-      {
-        question: 'What do percentages (e.g., 0%, 50%, 100%) represent inside a `@keyframes` rule?',
-        options: ['The duration of the animation.', 'The opacity of the element.', 'The keyframes or stages of the animation sequence.', 'The number of times to repeat.'],
-        correctAnswer: 2,
-        explanation: 'Percentages are used to define the state of the element at different points during the animation\'s duration, from start (0%) to finish (100%).'
-      }
-    ],
-    'css-preprocessors': [
-      {
-        question: 'What is a CSS preprocessor?',
-        options: ['A tool that compresses CSS files.', 'A scripting language that extends CSS and is then compiled into regular CSS.', 'A linter that checks for errors in CSS.', 'A JavaScript library for styling.'],
-        correctAnswer: 1,
-        explanation: 'Preprocessors like Sass and Less add features like variables, nesting, and mixins to CSS, which helps with organization and code reuse. The preprocessor then compiles this code into standard CSS that browsers can understand.'
-      }
-    ],
-    'css-methodologies-bem': [
-      {
-        question: 'What is BEM?',
-        options: ['A CSS preprocessor.', 'A JavaScript library.', 'A popular naming convention for CSS classes (Block, Element, Modifier).', 'A type of CSS animation.'],
-        correctAnswer: 2,
-        explanation: 'BEM (Block, Element, Modifier) is a naming methodology that helps create more readable, maintainable, and scalable CSS by creating clear, strict relationships between class names.'
-      }
-    ],
+        {
+            question: 'Which is the correct way to make a container a flex container?',
+            options: ['display: flexbox;', 'display: flex;', 'flex: true;', 'container: flex;'],
+            correctAnswer: 1,
+            explanation: 'To create a flex container, you need to set the `display` property of the container element to `flex` or `inline-flex`.'
+        },
+        {
+            question: 'The `justify-content` property aligns flex items along which axis?',
+            options: ['The cross axis', 'The main axis', 'The vertical axis', 'The z-axis'],
+            correctAnswer: 1,
+            explanation: '`justify-content` is used to align flex items along the main axis of the flex container (which is horizontal, by default).'
+        },
+        {
+            question: 'Which `align-items` value will stretch the flex items to fill the container\'s height (cross axis)?',
+            options: ['stretch', 'center', 'flex-start', 'baseline'],
+            correctAnswer: 0,
+            explanation: '`align-items: stretch;` is the default value, and it causes items to stretch to fill the container along the cross axis.'
+        },
+        {
+            question: 'How do you change the direction of the main axis to be vertical?',
+            options: ['`flex-flow: vertical;`', '`main-axis: vertical;`', '`flex-direction: column;`', '`direction: column;`'],
+            correctAnswer: 2,
+            explanation: 'The `flex-direction` property defines the direction of the main axis. Setting it to `column` stacks the flex items vertically.'
+        },
+        {
+            question: 'What does the `flex-wrap: wrap;` property do?',
+            options: ['It wraps text inside the flex items.', 'It allows flex items to wrap onto multiple lines if they run out of space.', 'It adds a decorative wrapper around the items.', 'It reverses the order of the items.'],
+            correctAnswer: 1,
+            explanation: 'By default, flex items try to fit onto one line. `flex-wrap: wrap;` allows the items to wrap onto additional lines if needed.'
+        }
+    ]
   },
   javascript: {
     'js-introduction': [
       {
-        question: 'Where is JavaScript code typically executed?',
-        options: ['On the web server', 'In the user\'s web browser', 'In the database', 'In the CSS file'],
-        correctAnswer: 1,
-        explanation: 'JavaScript is a client-side scripting language, which means it runs on the user\'s computer inside their web browser.'
-      }
-    ],
-    'js-syntax-and-statements': [
-      {
-        question: 'In JavaScript, what character is used to separate statements?',
-        options: ['Comma (,)', 'Colon (:)', 'Semicolon (;)', 'Period (.)'],
+        question: 'Inside which HTML element do we put the JavaScript?',
+        options: ['<js>', '<scripting>', '<javascript>', '<script>'],
+        correctAnswer: 3,
+        explanation: 'JavaScript code is inserted between `<script>` and `</script>` tags.'
+      },
+       {
+        question: 'What is the correct syntax for referring to an external script called "xxx.js"?',
+        options: ['<script href="xxx.js">', '<script name="xxx.js">', '<script src="xxx.js">', '<script file="xxx.js">'],
         correctAnswer: 2,
-        explanation: 'Semicolons are used to separate JavaScript statements, although they are sometimes optional due to Automatic Semicolon Insertion (ASI). However, it is a best practice to always use them.'
+        explanation: 'The `src` attribute in a `<script>` tag is used to specify the URL of an external script file.'
+      },
+       {
+        question: 'The external JavaScript file must contain the <script> tag.',
+        options: ['True', 'False'],
+        correctAnswer: 1,
+        explanation: 'An external script file should contain only the JavaScript code, not the `<script>` tags themselves.'
+      },
+       {
+        question: 'How do you write "Hello World" in an alert box?',
+        options: ['msg("Hello World");', 'alertBox("Hello World");', 'alert("Hello World");', 'msgBox("Hello World");'],
+        correctAnswer: 2,
+        explanation: 'The `alert()` function is a built-in browser function that displays an alert box with a specified message and an OK button.'
+      },
+      {
+        question: 'How do you create a function in JavaScript?',
+        options: ['function:myFunction()', 'function = myFunction()', 'function myFunction()', 'def myFunction():'],
+        correctAnswer: 2,
+        explanation: 'A function is defined with the `function` keyword, followed by a name, followed by parentheses `()`.'
       }
     ],
     'js-variables': [
-      {
-        question: 'What is the main difference between `let` and `const`?',
-        options: ['`let` is for numbers, `const` is for strings.', '`let` can be reassigned, while `const` cannot.', '`let` is function-scoped, `const` is block-scoped.', 'There is no difference.'],
-        correctAnswer: 1,
-        explanation: 'A `let` variable can be reassigned a new value, but a `const` variable\'s value cannot be changed after it is declared (for primitive values). Both are block-scoped.'
-      }
+        {
+            question: 'How do you declare a JavaScript variable?',
+            options: ['`v carName;`', '`variable carName;`', '`let carName;`', '`string carName;`'],
+            correctAnswer: 2,
+            explanation: 'In modern JavaScript, variables are declared with the `let` or `const` keywords. `var` is also used but is from older versions.'
+        },
+        {
+            question: 'Which operator is used to assign a value to a variable?',
+            options: ['=', 'x', '-', '*'],
+            correctAnswer: 0,
+            explanation: 'The `=` assignment operator is used to assign a value to a variable.'
+        },
+        {
+            question: 'What will the following code return: `Boolean(10 > 9)`?',
+            options: ['false', 'true', 'NaN', 'undefined'],
+            correctAnswer: 1,
+            explanation: 'The expression `10 > 9` is true, and passing `true` to the `Boolean()` constructor returns `true`.'
+        },
+        {
+            question: 'Is JavaScript case-sensitive?',
+            options: ['Yes', 'No'],
+            correctAnswer: 0,
+            explanation: 'Yes, JavaScript is case-sensitive. `myVariable` and `myvariable` are treated as two different variables.'
+        },
+        {
+            question: 'What is the correct way to write a JavaScript array?',
+            options: ['`const colors = "red", "green", "blue"`', '`const colors = (1:"red", 2:"green", 3:"blue")`', '`const colors = ["red", "green", "blue"]`', '`const colors = 1="red", 2="green", 3="blue"`'],
+            correctAnswer: 2,
+            explanation: 'A JavaScript array is written by enclosing a comma-separated list of values in square brackets `[]`.'
+        }
     ],
-    'js-data-types': [
-      {
-        question: 'What is the result of `typeof null`?',
-        options: ['"null"', '"undefined"', '"object"', '"number"'],
-        correctAnswer: 2,
-        explanation: 'This is a well-known quirk in JavaScript from its early days. `typeof null` returns "object", which is generally considered a bug in the language.'
-      }
-    ],
-    'js-operators': [
-      {
-        question: 'Which operator is used for strict equality (checks both value and type)?',
-        options: ['==', '=', '===', '!='],
-        correctAnswer: 2,
-        explanation: 'The `===` operator checks for strict equality, meaning it will only return `true` if both the value and the data type of the operands are the same. It is generally preferred over `==`.'
-      }
-    ],
-    'js-functions': [
-      {
-        question: 'What does the `return` statement do in a function?',
-        options: ['It prints a value to the console.', 'It stops the execution of the function and, optionally, returns a value from that function.', 'It restarts the function.', 'It declares a new variable.'],
-        correctAnswer: 1,
-        explanation: 'The `return` statement ends the function execution and specifies a value to be returned to the function caller.'
-      }
-    ],
-    'js-objects': [
-      {
-        question: 'How do you access the `name` property of an object called `person`?',
-        options: ['`person("name")`', '`person.name` or `person["name"]`', '`person->name`', '`get(person.name)`'],
-        correctAnswer: 1,
-        explanation: 'You can access object properties using dot notation (`person.name`) or bracket notation (`person["name"]`).'
-      }
-    ],
-    'js-arrays': [
-      {
-        question: 'Which method adds a new element to the end of an array and returns the new length?',
-        options: ['`pop()`', '`shift()`', '`push()`', '`unshift()`'],
-        correctAnswer: 2,
-        explanation: 'The `push()` method adds one or more elements to the end of an array.'
-      }
-    ],
-    'js-conditions': [
-      {
-        question: 'What is a "ternary operator"?',
-        options: ['An operator for combining three strings.', 'An operator that takes three operands, often used as a shortcut for an `if` statement.', 'An operator for working with 3D graphics.', 'There is no such operator.'],
-        correctAnswer: 1,
-        explanation: 'The ternary operator has the syntax `condition ? value_if_true : value_if_false`. It is a concise way to write a simple conditional expression.'
-      }
-    ],
-    'js-loops': [
-      {
-        question: 'Which loop is best suited for iterating over the elements of an array?',
-        options: ['`for...in`', '`while`', '`for...of`', '`for each`'],
-        correctAnswer: 2,
-        explanation: 'The `for...of` loop is the modern and preferred way to iterate over iterable objects like arrays, as it gives you direct access to the value of each element.'
-      }
-    ],
-    'js-dom-intro': [
-      {
-        question: "What does DOM stand for?",
-        options: ["Document Object Model", "Data Object Model", "Display Object Management", "Document Order Model"],
-        correctAnswer: 0,
-        explanation: "DOM stands for Document Object Model. It's a tree-like representation of the HTML document that can be manipulated by scripting languages like JavaScript."
-      }
-    ],
-    'js-dom-methods': [
-      {
-        question: 'Which method is the most versatile for selecting a single element using a CSS selector?',
-        options: ['`getElementById()`', '`getElementsByClassName()`', '`querySelector()`', '`getElement()`'],
-        correctAnswer: 2,
-        explanation: '`querySelector()` is very powerful because it can use any valid CSS selector (like `.my-class > p`) to find the first matching element in the document.'
-      }
-    ],
-    'js-events': [
-      {
-        question: 'Which method is used to attach an event handler to an element in modern JavaScript?',
-        options: ['`attachEvent()`', '`onEvent()`', '`addEventListener()`', '`listen()`'],
-        correctAnswer: 2,
-        explanation: '`element.addEventListener()` is the modern and recommended way to register an event handler, as it allows multiple handlers for the same event and has more options.'
-      }
-    ],
-    'js-strings-and-methods': [
-      {
-        question: 'What is a major advantage of using template literals (backticks ``)?',
-        options: ['They are faster than regular strings', 'They allow for multi-line strings and easy embedding of expressions.', 'They can only be used for numbers.', 'They automatically escape HTML characters.'],
-        correctAnswer: 1,
-        explanation: 'Template literals make it much cleaner to create strings that span multiple lines or include variables/expressions (using `${...}`).'
-      }
-    ],
-    'js-array-iteration': [
-      {
-        question: 'Which array method creates a new array with all elements that pass a test implemented by a provided function?',
-        options: ['`map()`', '`filter()`', '`reduce()`', '`forEach()`'],
-        correctAnswer: 1,
-        explanation: 'The `filter()` method creates a new array containing only the elements from the original array that return `true` from the provided callback function.'
-      }
-    ],
-    'js-dates-and-math': [
-      {
-        question: 'How do you get a random integer between 1 and 10 (inclusive)?',
-        options: ['`Math.random(1, 10)`', '`Math.floor(Math.random() * 10) + 1`', '`Math.ceil(Math.random() * 10)`', '`Math.randomInt(1, 10)`'],
-        correctAnswer: 1,
-        explanation: '`Math.random()` gives a number from 0 to <1. Multiplying by 10 gives 0 to <10. `Math.floor()` rounds down, giving 0-9. Adding 1 shifts the range to 1-10.'
-      }
-    ],
-    'js-es6-features': [
-      {
-        question: 'What does "destructuring assignment" allow you to do?',
-        options: ['Destroy an object or array.', 'Unpack values from arrays, or properties from objects, into distinct variables.', 'A way to restructure a database.', 'A new type of `for` loop.'],
-        correctAnswer: 1,
-        explanation: 'Destructuring provides a concise way to extract data. For example, `const [a, b] = [10, 20];` creates variables `a` and `b`.'
-      }
-    ],
-    'js-async-intro': [
-      {
-        question: 'What is "callback hell"?',
-        options: ['A type of JavaScript error', 'A situation with deeply nested, unreadable callbacks', 'A function that calls itself infinitely', 'A security vulnerability'],
-        correctAnswer: 1,
-        explanation: '"Callback hell" (or the "pyramid of doom") refers to the messy, hard-to-read code structure that results from nesting many callback functions to handle sequential asynchronous operations.'
-      }
-    ],
-    'js-promises': [
-      {
-        question: 'What are the three states of a Promise?',
-        options: ['`pending`, `resolved`, `rejected`', '`waiting`, `complete`, `failed`', '`pending`, `fulfilled`, `rejected`', '`start`, `middle`, `end`'],
-        correctAnswer: 2,
-        explanation: 'A Promise starts in the `pending` state. If the operation is successful, it transitions to the `fulfilled` state. If it fails, it transitions to the `rejected` state.'
-      }
-    ],
-    'js-async-await': [
-      {
-        question: 'What does the `await` keyword do?',
-        options: ['It defines a function as asynchronous.', 'It immediately rejects a Promise.', 'It pauses the execution of an `async` function until a Promise is settled (fulfilled or rejected).', 'It runs a function synchronously.'],
-        correctAnswer: 2,
-        explanation: '`await` can only be used inside an `async function`. It makes the function wait for the Promise to resolve and then returns its result, which makes asynchronous code look and behave more like synchronous code.'
-      }
-    ],
-    'js-classes': [
-      {
-        question: 'What is the name of the special method for creating and initializing an object created with a class?',
-        options: ['`init()`', '`constructor()`', '`create()`', '`setup()`'],
-        correctAnswer: 1,
-        explanation: 'The `constructor` method is a special method of a class for creating and initializing an object instance of that class.'
-      }
-    ],
-    'js-modules': [
-      {
-        question: 'What is the difference between a default export and a named export?',
-        options: ['There is no difference.', 'A module can have multiple default exports.', 'A module can only have one default export, but it can have multiple named exports.', 'Default exports are for functions, named exports are for variables.'],
-        correctAnswer: 2,
-        explanation: 'Each module can have one default export and as many named exports as needed. Default exports are imported without curly braces, while named exports must be imported with curly braces.'
-      }
-    ],
-    'js-json': [
-      {
-        question: 'Which of the following is NOT valid in JSON?',
-        options: ['`"name": "John"`', '`"age": 30`', '`"isAdmin": false`', '`"sayHi": function(){}`'],
-        correctAnswer: 3,
-        explanation: 'JSON is a data-interchange format and cannot contain functions or undefined values. It only supports strings, numbers, booleans, arrays, and objects.'
-      }
-    ],
-    'js-fetch-api': [
-      {
-        question: 'Is the Fetch API a replacement for XMLHttpRequest (XHR)?',
-        options: ['No, they do different things.', 'Yes, Fetch is a modern, more powerful, and flexible replacement for XHR.', 'They are the same thing.', 'Fetch is older than XHR.'],
-        correctAnswer: 1,
-        explanation: 'The Fetch API provides a much better, Promise-based alternative to the older, callback-based XMLHttpRequest interface.'
-      }
-    ],
-    'js-error-handling': [
-      {
-        question: 'Which block is executed regardless of whether an error was thrown or caught in a `try...catch` statement?',
-        options: ['`then`', '`finally`', '`else`', '`always`'],
-        correctAnswer: 1,
-        explanation: 'The optional `finally` block executes after `try` and `catch`. It always executes, regardless of whether an exception was thrown or caught, making it ideal for cleanup code.'
-      }
-    ],
-    'js-this-keyword': [
-      {
-        question: 'What is a key difference in how arrow functions handle the `this` keyword?',
-        options: ['There is no difference.', 'Arrow functions do not have their own `this`; they inherit it from the parent (lexical) scope.', '`this` always refers to the global object in arrow functions.', 'Arrow functions require you to explicitly bind `this`.'],
-        correctAnswer: 1,
-        explanation: 'Arrow functions have a lexical `this`, meaning `this` retains the value of the enclosing context. This avoids many common bugs where `this` would otherwise be rebound in regular functions.'
-      }
-    ],
-    'js-prototypes': [
-      {
-        question: "In JavaScript, where do objects get their properties and methods from if they are not defined on the object itself?",
-        options: ["From the global scope", "From their prototype chain", "From a parent class", "They don't; it results in an error"],
-        correctAnswer: 1,
-        explanation: "JavaScript uses the prototype chain for inheritance. If a property is not found on an object, the JavaScript engine looks up the prototype chain until it finds the property or reaches the end of the chain."
-      }
-    ],
-    'js-closures': [
-      {
-        question: 'What is a closure?',
-        options: ['A function that has been closed and cannot be called.', 'A function that has access to its outer function\'s scope, even after the outer function has returned.', 'A way to secure JavaScript code.', 'A type of variable.'],
-        correctAnswer: 1,
-        explanation: 'A closure gives you access to an outer function’s variables from an inner function. This is a fundamental concept for creating private data and stateful functions in JavaScript.'
-      }
-    ],
-    'js-event-loop': [
-      {
-        question: 'What is the role of the message queue in the event loop?',
-        options: ['To execute JavaScript code immediately.', 'To store messages to be processed by the call stack when it is empty.', 'To pause the browser.', 'To store variables.'],
-        correctAnswer: 1,
-        explanation: 'Asynchronous operations (like `setTimeout`) place their callbacks in the message queue. The event loop moves tasks from the queue to the call stack for execution, but only when the call stack is clear.'
-      }
-    ],
-    'js-frameworks-intro': [
-      {
-        question: 'What is a key principle of component-based architecture in frameworks like React?',
-        options: ['Writing all code in a single file.', 'Breaking the UI into independent, reusable pieces.', 'Using only JavaScript to style the page.', 'Avoiding the use of HTML.'],
-        correctAnswer: 1,
-        explanation: 'Component-based architecture involves building encapsulated components that manage their own state, then composing them to make complex UIs. This makes code more manageable and reusable.'
-      }
+     'js-async-await': [
+        {
+            question: 'The `await` keyword can only be used inside...',
+            options: ['A regular function', 'An `async` function', 'A `Promise`', 'A `setTimeout` callback'],
+            correctAnswer: 1,
+            explanation: '`await` is a special syntax available only within `async` functions. It pauses the function execution until a Promise is settled.'
+        },
+        {
+            question: 'What is the primary purpose of `async/await`?',
+            options: ['To make code run faster.', 'To allow synchronous code to run in the background.', 'To write asynchronous code that looks and behaves more like synchronous code.', 'To replace all `for` loops.'],
+            correctAnswer: 2,
+            explanation: '`async/await` is syntactic sugar over Promises, making it easier to read and write asynchronous operations by avoiding long `.then()` chains.'
+        },
+        {
+            question: 'How do you handle errors when using `async/await`?',
+            options: ['With a `.catch()` block on the function call', 'With a `try...catch` block', 'Errors cannot be handled with `async/await`', 'With an `onerror` attribute'],
+            correctAnswer: 1,
+            explanation: 'When an `await`ed Promise rejects, it throws an error. The standard way to handle these errors is to wrap the `await` call in a `try...catch` block.'
+        },
+        {
+            question: 'An `async` function always returns what?',
+            options: ['A boolean', 'A string', 'An object', 'A `Promise`'],
+            correctAnswer: 3,
+            explanation: 'An `async` function implicitly returns a `Promise`. If the function returns a value, the Promise will be fulfilled with that value. If it throws an error, the Promise will be rejected.'
+        },
+        {
+            question: 'Can you use `await` on a non-Promise value?',
+            options: ['No, it will throw an error', 'Yes, it will convert the value to a resolved Promise and return the value', 'Yes, but it will block the entire browser', 'Only if the value is a number'],
+            correctAnswer: 1,
+            explanation: 'If you `await` a non-Promise value, it effectively wraps the value in a resolved Promise and immediately gives you back that value. It does not cause an error.'
+        }
     ],
   },
 };
