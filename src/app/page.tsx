@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Logo } from '@/components/Logo';
-import { CodeXml, Paintbrush, ArrowRight, CheckCircle, Trophy, BarChart, Clock } from 'lucide-react';
+import { CodeXml, Paintbrush, ArrowRight, CheckCircle, Trophy, BarChart, Clock, MonitorSmartphone, Code, Check, Award } from 'lucide-react';
 import { JsIcon } from '@/components/JsIcon';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
@@ -220,10 +220,22 @@ export default function Home() {
                   Our mobile-first design ensures a seamless responsive experience—master web dev quizzes on laptop or phone for anytime brain debugging.
                 </p>
                 <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-                  <Badge variant="outline" className="text-sm border-secondary/30 bg-secondary/10 text-secondary">Responsive interface</Badge>
-                  <Badge variant="outline" className="text-sm border-secondary/30 bg-secondary/10 text-secondary">Consistent quiz experience</Badge>
-                  <Badge variant="outline" className="text-sm border-secondary/30 bg-secondary/10 text-secondary">Access from any device</Badge>
-                  <Badge variant="outline" className="text-sm border-secondary/30 bg-secondary/10 text-secondary">Learn on the go</Badge>
+                  <Badge variant="outline" className="text-sm border-secondary/30 bg-secondary/10 text-secondary">
+                    <MonitorSmartphone className="mr-2 h-4 w-4" />
+                    Responsive interface
+                  </Badge>
+                  <Badge variant="outline" className="text-sm border-secondary/30 bg-secondary/10 text-secondary">
+                    <Code className="mr-2 h-4 w-4" />
+                    Code-focused quizzes
+                  </Badge>
+                  <Badge variant="outline" className="text-sm border-secondary/30 bg-secondary/10 text-secondary">
+                    <Award className="mr-2 h-4 w-4" />
+                    Progress tracking
+                  </Badge>
+                  <Badge variant="outline" className="text-sm border-secondary/30 bg-secondary/10 text-secondary">
+                    <Trophy className="mr-2 h-4 w-4" />
+                    Leaderboard
+                  </Badge>
                 </div>
               </div>
             </div>
