@@ -1,8 +1,9 @@
 
+
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Logo } from '@/components/Logo';
-import { CodeXml, Paintbrush, ArrowRight, CheckCircle, Trophy, BarChart, Clock, MonitorSmartphone, Code, Check, Award } from 'lucide-react';
+import { CodeXml, Paintbrush, ArrowRight, CheckCircle, Trophy, BarChart, Clock, MonitorSmartphone, Code, Check, Award, Github, Twitter, Dribbble } from 'lucide-react';
 import { JsIcon } from '@/components/JsIcon';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
@@ -306,10 +307,64 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="py-6 px-4 md:px-6">
-        <p className="text-center text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} Web Dev Quiz. All rights reserved.
-        </p>
+      <footer className="w-full bg-gradient-to-r from-[#080810] to-[#050509] text-muted-foreground border-t border-white/10">
+        <div className="container mx-auto py-12 px-4 md:px-6">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+            {/* Column 1: Logo and Social */}
+            <div className="space-y-4">
+              <Logo />
+              <p className="max-w-xs text-sm">
+                The ultimate platform to test and improve your web development skills.
+              </p>
+              <div className="flex space-x-4">
+                <Link href="#" className="hover:text-secondary transition-colors">
+                  <Github className="h-5 w-5" />
+                </Link>
+                <Link href="#" className="hover:text-secondary transition-colors">
+                  <Twitter className="h-5 w-5" />
+                </Link>
+                <Link href="#" className="hover:text-secondary transition-colors">
+                  <Dribbble className="h-5 w-5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Column 2: Primary Links */}
+            <div className="space-y-4">
+              <h3 className="font-headline text-lg text-foreground">Primary</h3>
+              <ul className="space-y-2">
+                <li><Link href="/modules" className="hover:text-secondary transition-colors text-sm">Modules</Link></li>
+                <li><Link href="/leaderboard" className="hover:text-secondary transition-colors text-sm">Leaderboard</Link></li>
+                <li><Link href="/progress" className="hover:text-secondary transition-colors text-sm">Progress</Link></li>
+                <li><Link href="/contact" className="hover:text-secondary transition-colors text-sm">Contact</Link></li>
+              </ul>
+            </div>
+
+            {/* Column 3: Subjects */}
+            <div className="space-y-4">
+              <h3 className="font-headline text-lg text-foreground">Subjects</h3>
+              <ul className="space-y-2">
+                <li><Link href="/modules/html" className="hover:text-secondary transition-colors text-sm">HTML</Link></li>
+                <li><Link href="/modules/css" className="hover:text-secondary transition-colors text-sm">CSS</Link></li>
+                <li><Link href="/modules/javascript" className="hover:text-secondary transition-colors text-sm">JavaScript</Link></li>
+                <li><Link href="#" className="hover:text-secondary transition-colors text-sm">Web APIs</Link></li>
+              </ul>
+            </div>
+
+            {/* Column 4: Legal */}
+            <div className="space-y-4">
+              <h3 className="font-headline text-lg text-foreground">Legal</h3>
+              <ul className="space-y-2">
+                <li><Link href="#" className="hover:text-secondary transition-colors text-sm">Privacy Policy</Link></li>
+                <li><Link href="#" className="hover:text-secondary transition-colors text-sm">Terms of Service</Link></li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-8 border-t border-white/10 pt-6 text-center text-sm">
+            <p>&copy; {new Date().getFullYear()} WEBLEARN. All rights reserved.</p>
+          </div>
+        </div>
       </footer>
     </div>
   );
