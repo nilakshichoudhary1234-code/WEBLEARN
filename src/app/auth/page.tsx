@@ -15,12 +15,25 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Logo } from '@/components/Logo';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export default function AuthPage() {
   const router = useRouter();
+  const [loginEmail, setLoginEmail] = useState('');
+  const [signupUsername, setSignupUsername] = useState('');
+  const [signupEmail, setSignupEmail] = useState('');
 
-  const handleContinue = () => {
+  const handleLogin = () => {
     // In a real app, you'd handle auth here
+    const user = { email: loginEmail, username: loginEmail.split('@')[0] };
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    router.push('/modules');
+  };
+  
+  const handleSignup = () => {
+    // In a real app, you'd handle auth here
+    const user = { email: signupEmail, username: signupUsername };
+    localStorage.setItem('currentUser', JSON.stringify(user));
     router.push('/modules');
   };
 
@@ -45,7 +58,14 @@ export default function AuthPage() {
             <CardContent className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="email-login">Email</Label>
-                <Input id="email-login" type="email" placeholder="m@example.com" required />
+                <Input 
+                  id="email-login" 
+                  type="email" 
+                  placeholder="m@example.com" 
+                  required 
+                  value={loginEmail}
+                  onChange={(e) => setLoginEmail(e.target.value)}
+                />
               </div>
               <div className="space-y-2">
                 <div className="flex items-center">
@@ -58,7 +78,7 @@ export default function AuthPage() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button className="w-full" onClick={handleContinue}>
+              <Button className="w-full" onClick={handleLogin}>
                 Continue
               </Button>
             </CardFooter>
@@ -75,11 +95,25 @@ export default function AuthPage() {
             <CardContent className="space-y-4">
                <div className="space-y-2">
                 <Label htmlFor="username-signup">Username</Label>
-                <Input id="username-signup" type="text" placeholder="Your Username" required />
+                <Input 
+                  id="username-signup" 
+                  type="text" 
+                  placeholder="Your Username" 
+                  required 
+                  value={signupUsername}
+                  onChange={(e) => setSignupUsername(e.target.value)}
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email-signup">Email</Label>
-                <Input id="email-signup" type="email" placeholder="m@example.com" required />
+                <Input 
+                  id="email-signup" 
+                  type="email" 
+                  placeholder="m@example.com" 
+                  required 
+                  value={signupEmail}
+                  onChange={(e) => setSignupEmail(e.target.value)}
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="password-signup">Password</Label>
@@ -87,7 +121,7 @@ export default function AuthPage() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button className="w-full" onClick={handleContinue}>
+              <Button className="w-full" onClick={handleSignup}>
                 Sign Up
               </Button>
             </CardFooter>

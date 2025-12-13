@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,7 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Separator } from '@/components/ui/separator';
 import { Progress } from '@/components/ui/progress';
-import { User, Mail, Calendar, Award, BarChart2, Zap } from 'lucide-react';
+import { Award, BarChart2, Zap } from 'lucide-react';
 
 const mockUserData = {
   displayName: 'Alex Doe',
@@ -36,18 +36,54 @@ const mockUserData = {
   ],
 };
 
+interface User {
+    displayName: string;
+    username: string;
+    email: string;
+    avatar: string;
+    bio: string;
+}
 
 export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false);
-  const [displayName, setDisplayName] = useState(mockUserData.displayName);
-  const [bio, setBio] = useState(mockUserData.bio);
+  const [user, setUser] = useState<User | null>(null);
+  const [displayName, setDisplayName] = useState('');
+  const [bio, setBio] = useState('');
+
+  useEffect(() => {
+    // Safely access localStorage only on the client side
+    const storedUser = localStorage.getItem('currentUser');
+    if (storedUser) {
+        const parsedUser = JSON.parse(storedUser);
+        const userData: User = {
+            ...mockUserData,
+            displayName: parsedUser.username || mockUserData.displayName,
+            username: parsedUser.username || mockUserData.username,
+            email: parsedUser.email || mockUserData.email,
+        };
+        setUser(userData);
+        setDisplayName(userData.displayName);
+        setBio(userData.bio);
+    } else {
+        // Fallback to mock data if no user is in localStorage
+        setUser(mockUserData);
+        setDisplayName(mockUserData.displayName);
+        setBio(mockUserData.bio);
+    }
+  }, []);
 
   const handleSave = () => {
-    // In a real app, you'd save this data to a backend or localStorage
-    mockUserData.displayName = displayName;
-    mockUserData.bio = bio;
-    setIsEditing(false);
+    if (user) {
+        const updatedUser = { ...user, displayName, bio };
+        localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+        setUser(updatedUser);
+        setIsEditing(false);
+    }
   };
+
+  if (!user) {
+    return <div>Loading profile...</div>;
+  }
 
   return (
     <div className="container mx-auto max-w-4xl py-8 px-4 md:px-6">
@@ -55,8 +91,8 @@ export default function ProfilePage() {
         <CardHeader className="flex flex-col md:flex-row items-start md:items-center gap-6">
           <div className="relative">
             <Avatar className="h-24 w-24 border-4 border-secondary/50">
-              <AvatarImage src={mockUserData.avatar} alt={mockUserData.displayName} />
-              <AvatarFallback>{mockUserData.displayName.charAt(0)}</AvatarFallback>
+              <AvatarImage src={user.avatar} alt={user.displayName} />
+              <AvatarFallback>{user.displayName.charAt(0)}</AvatarFallback>
             </Avatar>
             <Button size="icon" className="absolute -bottom-2 -right-2 h-8 w-8 rounded-full">
               ✏️
