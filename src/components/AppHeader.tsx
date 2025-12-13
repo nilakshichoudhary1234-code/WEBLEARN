@@ -21,7 +21,7 @@ export function AppHeader() {
             Home
           </Link>
           <Link href="/modules" className="text-muted-foreground transition-colors hover:text-foreground">
-            Modules
+            Explore
           </Link>
           <Link href="/leaderboard" className="text-muted-foreground transition-colors hover:text-foreground">
             Leaderboard
@@ -31,23 +31,22 @@ export function AppHeader() {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="relative h-8 w-8 rounded-full">
               <Avatar className="h-8 w-8">
-                <AvatarImage src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User" />
-                <AvatarFallback>U</AvatarFallback>
+                <AvatarImage src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Alex Doe" />
+                <AvatarFallback>AD</AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56" align="end" forceMount>
             <DropdownMenuLabel className="font-normal">
               <div className="flex flex-col space-y-1">
-                <p className="text-sm font-medium leading-none">User</p>
-                <p className="text-xs leading-none text-muted-foreground">user@example.com</p>
+                <p className="text-sm font-medium leading-none">Alex Doe</p>
+                <p className="text-xs leading-none text-muted-foreground">alex.doe@example.com</p>
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
-              <Link href="/modules">Dashboard</Link>
+              <Link href="/profile">Profile</Link>
             </DropdownMenuItem>
-            <DropdownMenuItem>Profile</DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
                 <Link href="/">Logout</Link>
