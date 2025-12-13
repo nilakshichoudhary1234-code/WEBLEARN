@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Trophy } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export default function LeaderboardPage() {
   return (
