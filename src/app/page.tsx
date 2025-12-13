@@ -102,9 +102,6 @@ export default function Home() {
           <Link href="/modules" className="text-muted-foreground transition-colors hover:text-secondary">
             Modules
           </Link>
-          <Link href="/quiz/html/introduction-to-html" className="text-muted-foreground transition-colors hover:text-secondary">
-            Quiz
-          </Link>
           <Link href="/leaderboard" className="text-muted-foreground transition-colors hover:text-secondary">
             Leaderboard
           </Link>
