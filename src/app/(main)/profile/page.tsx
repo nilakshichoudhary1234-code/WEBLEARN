@@ -76,14 +76,8 @@ export default function ProfilePage() {
               </CardTitle>
             )}
             <CardDescription className="mt-1 text-muted-foreground flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-1">
-              <div className="flex items-center gap-2">
-                <User className="h-4 w-4" />
-                <span>{mockUserData.username}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                <span>Joined {new Date(mockUserData.joinedDate).toLocaleDateString()}</span>
-              </div>
+              
+              
             </CardDescription>
           </div>
           <div>
