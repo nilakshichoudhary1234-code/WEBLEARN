@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Progress } from '@/components/ui/progress';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const modules = [
   {
@@ -49,6 +50,38 @@ const featureBadges = [
   { icon: CheckCircle, text: 'Boost with Streak Multipliers' },
   { icon: Trophy, text: 'Join the Hall of Fame' },
 ]
+
+const faqs = [
+  {
+    question: 'What topics does the platform cover?',
+    answer: 'We cover HTML, CSS, and JavaScript fundamentals through over 500 interactive coding quizzes. Our curriculum is structured into beginner, intermediate, and advanced levels to guide you from the basics to mastery.'
+  },
+  {
+    question: 'Is it free to use?',
+    answer: 'Yes! All core quizzes and learning modules are completely free to use. We plan to introduce a premium tier in the future that will unlock advanced challenges, detailed analytics, and an ad-free experience.'
+  },
+  {
+    question: 'How are points calculated?',
+    answer: 'Your score is a combination of question difficulty, completion speed, and accuracy. Answering correctly on the first try yields the most points. Plus, maintain a consistent practice routine to activate streak multipliers that can boost your score up to 5x!'
+  },
+  {
+    question: 'Can I use it on mobile?',
+    answer: 'Absolutely. The platform is fully responsive and designed to work perfectly on laptops, tablets, and phones. Your progress is synced across all devices so you can learn anywhere, anytime.'
+  },
+  {
+    question: 'Do I need coding experience?',
+    answer: 'Not at all! Our platform is perfect for absolute beginners, but also provides a challenge for intermediate developers looking to sharpen their skills. You can start with the basics and unlock more advanced topics as you improve.'
+  },
+  {
+    question: 'How often are leaderboards reset?',
+    answer: 'We have both weekly and monthly competitions to give everyone a chance to compete for the top spot. Your all-time best scores are recorded in the Hall of Fame, which tracks lifetime achievements.'
+  },
+  {
+    question: 'Are explanations provided for answers?',
+    answer: 'Yes. After every question, you get instant feedback along with detailed explanations of the code, best practices, and common pitfalls. Our goal is to help you understand the \'why\' behind the answer.'
+  }
+];
+
 
 export default function Home() {
   const laptopImage = PlaceHolderImages.find((img) => img.id === 'laptop-mockup');
@@ -242,6 +275,34 @@ export default function Home() {
 
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="w-full py-24 sm:py-32">
+        <div className="container mx-auto max-w-4xl px-4 md:px-6">
+          <div className="mb-12 text-center">
+            <h2 className="font-headline text-4xl font-bold tracking-tight text-white sm:text-5xl">
+              Frequently Asked Questions
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Have questions? We've got answers.
+            </p>
+          </div>
+          <Accordion type="single" collapsible className="w-full space-y-4">
+            {faqs.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`} className="border-none">
+                <div className="glass-card group transition-all duration-300 hover:border-secondary/50 hover:shadow-[0_0_30px_hsl(var(--secondary)/0.3)]">
+                  <AccordionTrigger className="p-6 text-left font-headline text-lg hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="p-6 pt-0">
+                    <p className="text-muted-foreground">{faq.answer}</p>
+                  </AccordionContent>
+                </div>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
 
