@@ -40,7 +40,7 @@ export function AppHeader() {
             <DropdownMenuLabel className="font-normal">
               <div className="flex flex-col space-y-1">
                 <p className="text-sm font-medium leading-none">Alex Doe</p>
-                <p className="text-xs leading-none text-muted-foreground">alex.doe@example.com</p>
+                <p className="text-xs leading-none text-muted-foreground">write my login email here</p>
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
