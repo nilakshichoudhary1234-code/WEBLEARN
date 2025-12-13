@@ -124,8 +124,8 @@ export default function Home() {
        {/* Intro Section */}
        <section className="relative w-full py-24 sm:py-32 overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute -left-32 -top-16 h-96 w-96 rounded-full bg-green-500/10 blur-[100px]"></div>
-          <div className="absolute -right-32 -bottom-16 h-96 w-96 rounded-full bg-blue-500/10 blur-[100px]"></div>
+          <div className="absolute -left-32 -top-16 h-96 w-96 rounded-full bg-primary/10 blur-[100px]"></div>
+          <div className="absolute -right-32 -bottom-16 h-96 w-96 rounded-full bg-secondary/10 blur-[100px]"></div>
         </div>
         <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-4 md:grid-cols-2 md:px-6">
           <div className="space-y-8">
