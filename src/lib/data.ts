@@ -10,6 +10,7 @@ interface Topic {
   title: string;
   description: string;
   content: string;
+  learningObjectives?: string[];
   codeSnippet: {
     language: 'html' | 'css' | 'javascript' | 'bash';
     code: string;
@@ -36,8 +37,13 @@ export const contentData: Category[] = [
       {
         slug: 'introduction-to-html',
         title: 'HTML Introduction',
-        description: 'Learn what HTML is and its role in web pages.',
+        description: 'Explore what HTML is and its role in web pages.',
         content: 'HTML (HyperText Markup Language) is the standard markup language for creating web pages. It describes the structure of a web page and consists of a series of elements, which tell the browser how to display the content. At its core, HTML is about defining the meaning and structure of your content, a concept known as semantics. For instance, is this text a heading, a paragraph, a list, or something else? HTML provides the tags to make these distinctions clear.',
+        learningObjectives: [
+            "Define what HTML is and its role as the backbone of a webpage.",
+            "Identify the basic structure of an HTML document, including `<!DOCTYPE>`, `<html>`, `<head>`, and `<body>`.",
+            "Recognize common HTML tags like `<h1>`, `<p>`, and `<a>`."
+        ],
         codeSnippet: { language: 'html', code: '<!DOCTYPE html>\n<html>\n<head>\n  <title>Page Title</title>\n</head>\n<body>\n\n<h1>My First Heading</h1>\n<p>My first paragraph.</p>\n\n</body>\n</html>' },
         output: 'The browser renders a heading and a paragraph.',
       },
@@ -68,7 +74,7 @@ export const contentData: Category[] = [
       {
         slug: 'html-attributes',
         title: 'HTML Attributes',
-        description: 'Learn how to provide additional information to elements.',
+        description: 'Explore how to provide additional information to elements.',
         content: 'Attributes provide additional information about HTML elements. They are always specified in the start tag and usually come in name/value pairs like `name="value"`. The `href` attribute of a link and the `src` attribute of an image are common examples.',
         codeSnippet: { language: 'html', code: '<a href="https://example.com">Visit our site</a>\n<img src="image.jpg" alt="An image" width="500" height="600">' },
         output: 'The `href` attribute specifies the link\'s destination, and `src`, `alt`, `width`, and `height` provide details about the image.',
@@ -84,7 +90,7 @@ export const contentData: Category[] = [
       {
         slug: 'html-paragraphs',
         title: 'HTML Paragraphs',
-        description: 'Learn how to define blocks of text.',
+        description: 'Explore how to define blocks of text.',
         content: 'The HTML `<p>` element defines a paragraph. Browsers automatically add some white space (a margin) before and after a paragraph to separate them visually.',
         codeSnippet: { language: 'html', code: '<p>This is a paragraph.</p>\n<p>This is another paragraph.</p>' },
         output: 'Renders two separate blocks of text.',
@@ -108,7 +114,7 @@ export const contentData: Category[] = [
       {
         slug: 'html-comments',
         title: 'HTML Comments',
-        description: 'Learn how to add comments to your code.',
+        description: 'Explore how to add comments to your code.',
         content: 'HTML comments are not displayed in the browser, but they can help document your HTML source code. Comments are written as `<!-- This is a comment -->` and can be used to leave notes for yourself or other developers.',
         codeSnippet: { language: 'html', code: '<!-- This comment will not be displayed -->\n<p>This paragraph will be displayed.</p>' },
         output: 'Only the paragraph is visible on the page.',
@@ -117,7 +123,7 @@ export const contentData: Category[] = [
       {
         slug: 'html-links',
         title: 'HTML Links',
-        description: 'Learn how to create hyperlinks to connect pages.',
+        description: 'Explore how to create hyperlinks to connect pages.',
         content: 'Links are created using the `<a>` (anchor) tag. The `href` attribute is essential as it specifies the destination URL. You can link to other pages, files, locations on the same page, or create email links.',
         codeSnippet: { language: 'html', code: '<a href="/about">About Us</a>\n<a href="#section2">Go to Section 2</a>\n<a href="mailto:info@example.com">Email Us</a>' },
         output: 'Creates links to another page, an internal section, and an email address.',
@@ -133,7 +139,7 @@ export const contentData: Category[] = [
       {
         slug: 'html-tables',
         title: 'HTML Tables',
-        description: 'Learn how to display data in rows and columns.',
+        description: 'Explore how to display data in rows and columns.',
         content: 'HTML tables allow you to arrange data into rows and columns. Use `<table>` to define the table, `<tr>` for rows, `<th>` for headers, and `<td>` for data cells. Use `<thead>`, `<tbody>`, and `<tfoot>` for semantic structure.',
         codeSnippet: { language: 'html', code: '<table>\n  <thead>\n    <tr><th>Name</th><th>Age</th></tr>\n  </thead>\n  <tbody>\n    <tr><td>Alice</td><td>30</td></tr>\n  </tbody>\n</table>' },
         output: 'Renders a simple table with a header section and a body section.',
@@ -173,7 +179,7 @@ export const contentData: Category[] = [
       {
         slug: 'html-forms',
         title: 'HTML Forms',
-        description: 'Learn how to create forms to collect user input.',
+        description: 'Explore how to create forms to collect user input.',
         content: 'Forms (`<form>`) are essential for collecting user data. They contain various input elements like text fields (`<input type="text">`), checkboxes, radio buttons, and submit buttons. The `action` attribute defines where the data is sent, and `method` defines how (GET or POST).',
         codeSnippet: { language: 'html', code: '<form action="/submit_form" method="post">\n  <label for="username">Username:</label>\n  <input type="text" id="username" name="username">\n  <button type="submit">Submit</button>\n</form>' },
         output: 'Renders a text input field labeled "Username" and a submit button inside a form.',
@@ -238,7 +244,7 @@ export const contentData: Category[] = [
       {
         slug: 'html-graphics',
         title: 'HTML Graphics (Canvas & SVG)',
-        description: 'Learn to create graphics on the web.',
+        description: 'Explore to create graphics on the web.',
         content: 'Canvas (`<canvas>`) is used to draw graphics via JavaScript, ideal for dynamic animations, games, and data visualizations. SVG (`<svg>`) is an XML-based language for describing 2D vector graphics, perfect for logos and icons that need to scale perfectly without losing quality.',
         codeSnippet: { language: 'html', code: '<svg width="100" height="100">\n  <circle cx="50" cy="50" r="40" fill="yellow" />\n</svg>' },
         output: 'Renders a yellow circle using Scalable Vector Graphics (SVG).',
@@ -287,8 +293,13 @@ export const contentData: Category[] = [
       {
         slug: 'css-introduction',
         title: 'CSS Introduction',
-        description: 'Learn what CSS is and how it styles HTML.',
+        description: 'Explore what CSS is and how it styles HTML.',
         content: 'CSS (Cascading Style Sheets) is a stylesheet language used to describe the presentation of a document written in HTML. CSS describes how elements should be rendered on screen, on paper, or in other media. It controls colors, fonts, spacing, layout, and much more.',
+        learningObjectives: [
+            "Define what CSS is and its role in styling web pages.",
+            "Differentiate between the three ways of adding CSS: inline, internal, and external.",
+            "Understand the basic syntax of a CSS rule (selector and declaration block)."
+        ],
         codeSnippet: { language: 'css', code: 'body {\n  font-family: Arial, sans-serif;\n  background-color: #f0f0f0;\n}' },
         output: 'This CSS sets the default font and background color for the entire page.',
       },
@@ -303,7 +314,7 @@ export const contentData: Category[] = [
       {
         slug: 'css-selectors',
         title: 'CSS Selectors',
-        description: 'Learn how to target specific HTML elements for styling.',
+        description: 'Explore how to target specific HTML elements for styling.',
         content: 'Selectors are patterns used to select the element(s) you want to style. You can select elements by tag name (e.g., `p`), class (e.g., `.my-class`), ID (e.g., `#my-id`), attributes, and their state (e.g., `:hover`).',
         codeSnippet: { language: 'css', code: 'p { color: black; }      /* Element selector */\n.info { color: blue; }   /* Class selector */\n#header { color: green; } /* ID selector */' },
         output: 'These are three basic types of CSS selectors.',
@@ -319,7 +330,7 @@ export const contentData: Category[] = [
       {
         slug: 'css-comments',
         title: 'CSS Comments',
-        description: 'Learn how to add comments to your stylesheet.',
+        description: 'Explore how to add comments to your stylesheet.',
         content: 'CSS comments are used to explain your code and are ignored by the browser. A CSS comment starts with `/*` and ends with `*/`. They can be used for notes or to temporarily disable rules.',
         codeSnippet: { language: 'css', code: '/* This is a comment */\np {\n  color: red; /* Set text color to red */\n}' },
         output: 'Comments can be used to document your code for better maintainability.',
@@ -457,7 +468,7 @@ export const contentData: Category[] = [
       {
         slug: 'css-flexbox',
         title: 'CSS Flexbox',
-        description: 'Master one-dimensional layouts with this powerful layout module.',
+        description: 'Explore one-dimensional layouts with this powerful layout module.',
         content: 'The Flexbox Layout module makes it easier to design flexible responsive layout structures in one dimension (either a row or a column). It provides powerful alignment (`align-items`) and distribution (`justify-content`) capabilities.',
         codeSnippet: { language: 'css', code: '.container {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}' },
         output: 'Items inside `.container` will be spaced out evenly along the main axis and centered on the cross axis.',
@@ -465,7 +476,7 @@ export const contentData: Category[] = [
       {
         slug: 'css-grid',
         title: 'CSS Grid',
-        description: 'Master two-dimensional layouts for complex page structures.',
+        description: 'Explore two-dimensional layouts for complex page structures.',
         content: 'CSS Grid Layout is a two-dimensional layout system. It lets you lay content out in rows and columns, making it easy to create complex layouts that would be difficult with Flexbox alone. It is the most powerful layout system in CSS.',
         codeSnippet: { language: 'css', code: '.wrapper {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 10px;\n}' },
         output: 'Items inside `.wrapper` will be arranged in a three-column grid of equal-width tracks.',
@@ -513,7 +524,7 @@ export const contentData: Category[] = [
       {
         slug: 'css-preprocessors',
         title: 'CSS Preprocessors (Sass/Less)',
-        description: 'Learn about tools that extend the capabilities of CSS.',
+        description: 'Explore about tools that extend the capabilities of CSS.',
         content: 'Preprocessors like Sass and Less are scripting languages that extend the default capabilities of CSS. They allow you to use variables, nesting, mixins, functions, and more, which can make your CSS more maintainable, themeable, and organized. The code is then compiled into regular CSS.',
         codeSnippet: { language: 'css', code: '// Sass Example\n$primary-color: #333;\n\nbody {\n  color: $primary-color;\n  a {\n    color: darken($primary-color, 10%);\n  }\n}' },
         output: 'This Sass code uses variables and nesting, which would be compiled into standard CSS.',
@@ -521,7 +532,7 @@ export const contentData: Category[] = [
       {
         slug: 'css-methodologies-bem',
         title: 'CSS Methodologies (BEM)',
-        description: 'Learn strategies for writing scalable and maintainable CSS.',
+        description: 'Explore strategies for writing scalable and maintainable CSS.',
         content: 'As projects grow, CSS can become difficult to manage. Methodologies like BEM (Block, Element, Modifier) provide a naming convention that helps create self-contained, reusable components and avoids style conflicts. For example: `.card__title--highlighted`.',
         codeSnippet: { language: 'css', code: '/* BEM Naming Convention */\n.card { /* Block */ }\n.card__image { /* Element */ }\n.card--dark { /* Modifier */ }' },
         output: 'BEM provides a structured way to name your classes based on their role.',
@@ -540,13 +551,18 @@ export const contentData: Category[] = [
         title: 'JS Introduction',
         description: 'Understand the role of JavaScript in web development.',
         content: 'JavaScript is a programming language that enables you to create dynamically updating content, control multimedia, animate images, and much more. It is one of the three core technologies of the World Wide Web, alongside HTML and CSS, and is responsible for webpage behavior.',
+        learningObjectives: [
+            "Explain the role of JavaScript in making web pages interactive.",
+            "Understand how to include JavaScript in an HTML file using the `<script>` tag.",
+            "Write a simple JavaScript statement to manipulate an HTML element."
+        ],
         codeSnippet: { language: 'javascript', code: '// JavaScript can change HTML content\ndocument.getElementById("demo").innerHTML = "Hello JavaScript!";' },
         output: 'The text of the HTML element with id="demo" is changed.',
       },
       {
         slug: 'js-syntax-and-statements',
         title: 'JS Syntax and Statements',
-        description: 'Learn the fundamental rules for writing JavaScript.',
+        description: 'Explore the fundamental rules for writing JavaScript.',
         content: 'A JavaScript program is a list of statements to be executed by a computer. Statements are separated by semicolons. JavaScript is case-sensitive, so `myVariable` and `myvariable` are different.',
         codeSnippet: { language: 'javascript', code: 'let x, y, z;  // Declare 3 variables\nx = 5;          // Assign the value 5 to x\ny = 6;          // Assign the value 6 to y\nz = x + y;      // Assign the sum of x and y to z' },
         output: 'These statements declare variables and perform a simple calculation.',
@@ -554,7 +570,7 @@ export const contentData: Category[] = [
       {
         slug: 'js-variables',
         title: 'JS Variables (var, let, const)',
-        description: 'Learn how to store data values using variables.',
+        description: 'Explore how to store data values using variables.',
         content: 'Variables are containers for storing data. In modern JavaScript, you declare variables using `let` for values that can be reassigned, and `const` for constant values that cannot be reassigned. `var` is the older, function-scoped way to declare variables.',
         codeSnippet: { language: 'javascript', code: 'let name = "Alice";\nconst year = 2024;\nname = "Bob"; // This is allowed\n// year = 2025; // This would cause an error' },
         output: 'Three variables are created, holding a string, a number, and a boolean value.',
@@ -586,7 +602,7 @@ export const contentData: Category[] = [
       {
         slug: 'js-objects',
         title: 'JS Objects',
-        description: 'Learn to store collections of key-value pairs.',
+        description: 'Explore to store collections of key-value pairs.',
         content: 'Objects are variables too, but they can contain many values. The values are written as name:value pairs (properties). Objects are used to group related data and functionality.',
         codeSnippet: { language: 'javascript', code: 'const person = {\n  firstName: "John",\n  lastName: "Doe",\n  age: 50\n};\nconsole.log(person.firstName);' },
         output: 'The console will display "John".',
@@ -619,7 +635,7 @@ export const contentData: Category[] = [
       {
         slug: 'js-dom-intro',
         title: 'JS DOM Introduction',
-        description: 'Learn how JavaScript can interact with and change HTML content.',
+        description: 'Explore how JavaScript can interact with and change HTML content.',
         content: 'The Document Object Model (DOM) is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content. JavaScript can access and change all the elements of an HTML document.',
         codeSnippet: { language: 'javascript', code: '// Find an element by its ID\nconst p = document.getElementById("demo");\n\n// Change its content\np.innerHTML = "New content!";' },
         output: 'The text of the HTML element with the ID "demo" will be changed.',
@@ -635,7 +651,7 @@ export const contentData: Category[] = [
       {
         slug: 'js-events',
         title: 'JS Events',
-        description: 'Learn how to react to user actions like clicks and key presses.',
+        description: 'Explore how to react to user actions like clicks and key presses.',
         content: 'Events are actions that happen in the browser, such as a user clicking a button or pressing a key. You can use event listeners (`addEventListener`) to "listen" for these events and execute a function in response.',
         codeSnippet: { language: 'javascript', code: 'const button = document.getElementById("myBtn");\nbutton.addEventListener("click", function() {\n  alert("Button was clicked!");\n});' },
         output: 'When the button with id="myBtn" is clicked, an alert box will pop up.',
@@ -643,7 +659,7 @@ export const contentData: Category[] = [
       {
         slug: 'js-strings-and-methods',
         title: 'JS Strings and Methods',
-        description: 'Learn methods for working with text.',
+        description: 'Explore methods for working with text.',
         content: 'JavaScript provides many built-in methods for working with strings, such as `length`, `slice()`, `substring()`, `replace()`, `toUpperCase()`, and `concat()`. Template literals (using backticks ``) are a modern way to create strings with embedded expressions.',
         codeSnippet: { language: 'javascript', code: 'let name = "World";\nlet greeting = `Hello, ${name}!`; // "Hello, World!"\nconsole.log(greeting.toUpperCase()); // "HELLO, WORLD!"' },
         output: 'This code uses a template literal and a string method.',
@@ -667,7 +683,7 @@ export const contentData: Category[] = [
       {
         slug: 'js-es6-features',
         title: 'JS ES6 Features',
-        description: 'Learn modern JavaScript syntax and features.',
+        description: 'Explore modern JavaScript syntax and features.',
         content: 'ES6 (ECMAScript 2015) introduced many powerful features: `let` and `const`, arrow functions (`=>`), template literals, default parameters, destructuring, and the spread/rest operator (`...`). These features make code more concise and readable.',
         codeSnippet: { language: 'javascript', code: 'const greet = (name = "Guest") => `Hello, ${name}!`;\nconsole.log(greet()); // "Hello, Guest!"' },
         output: 'This uses an arrow function and a default parameter.',
@@ -772,8 +788,8 @@ export const contentData: Category[] = [
       {
         slug: 'js-frameworks-intro',
         title: 'JS Frameworks Prep (React, Vue, Angular)',
-        description: 'Learn concepts that are fundamental to modern frameworks.',
-        content: 'Modern frameworks like React, Vue, and Angular build upon core JavaScript concepts. Key ideas to understand are: component-based architecture, managing state, props (passing data down), declarative vs. imperative programming, and virtual DOM concepts. Mastering these will make learning a framework much easier.',
+        description: 'Explore concepts that are fundamental to modern frameworks.',
+        content: 'Modern frameworks like React, Vue, and Angular build upon core JavaScript concepts. Key ideas to understand are: component-based architecture, managing state, props (passing data down), declarative vs. imperative programming, and virtual DOM concepts. Mastering these will make exploring a framework much easier.',
         codeSnippet: { language: 'javascript', code: '// A "component" in plain JS could be a function that returns a DOM element\nfunction Greeting(props) {\n  const el = document.createElement("h1");\n  el.textContent = `Hello, ${props.name}`;\n  return el;\n}' },
         output: 'This shows the basic idea of a component: a reusable piece of UI that accepts data (props).',
       },
@@ -1619,7 +1635,7 @@ export const quizzes: Quizzes = {
         },
         {
             question: "What is the main advantage of Canvas over SVG?",
-            options: ["Canvas is better for static images like logos", "Canvas is better suited for dynamic, high-performance animations, games, and visualizations with many objects", "Canvas is easier to learn", "Canvas graphics are indexed by search engines"],
+            options: ["Canvas is better for static images like logos", "Canvas is better suited for dynamic, high-performance animations, games, and visualizations with many objects", "Canvas is easier to explore", "Canvas graphics are indexed by search engines"],
             correctAnswer: 1,
             explanation: "Canvas provides a 'fire-and-forget' drawing surface that can be faster for rendering thousands of objects, which is why it's often used for games and complex visualizations."
         },
