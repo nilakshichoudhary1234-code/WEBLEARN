@@ -81,10 +81,6 @@ export default function ProfilePage() {
                 <span>{mockUserData.username}</span>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
-                <span>{mockUserData.email}</span>
-              </div>
-              <div className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
                 <span>Joined {new Date(mockUserData.joinedDate).toLocaleDateString()}</span>
               </div>
