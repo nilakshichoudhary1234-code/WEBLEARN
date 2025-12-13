@@ -20,7 +20,7 @@ export default function ModulesPage() {
     <div className="container mx-auto max-w-4xl py-8 px-4 md:px-6">
       <div className="mb-8 text-center">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight font-headline text-foreground">
-          Learning Modules
+          EXPLORE WEBLEARN
         </h1>
         <p className="mt-4 text-lg text-muted-foreground">
           Choose a category to start learning and quizzing.
