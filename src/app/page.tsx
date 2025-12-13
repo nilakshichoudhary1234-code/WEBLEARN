@@ -8,6 +8,8 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Progress } from '@/components/ui/progress';
 
 const modules = [
   {
@@ -34,6 +36,19 @@ const benefits = [
     { text: 'Learn at your own pace with short, focused quiz sessions.' },
     { text: 'Build strong fundamentals for projects and interviews.' },
 ];
+
+const leaderboardHighlights = [
+  { rank: 1, avatar: '/avatars/01.png', username: 'lexie', score: 980, progress: 98 },
+  { rank: 2, avatar: '/avatars/02.png', username: 'ryan', score: 950, progress: 95 },
+  { rank: 3, avatar: '/avatars/03.png', username: 'cameron', score: 920, progress: 92 },
+];
+
+const featureBadges = [
+  { icon: BarChart, text: 'Weekly & Monthly Leaderboards' },
+  { icon: Award, text: 'Unlock Mastery Badges' },
+  { icon: CheckCircle, text: 'Boost with Streak Multipliers' },
+  { icon: Trophy, text: 'Join the Hall of Fame' },
+]
 
 export default function Home() {
   const laptopImage = PlaceHolderImages.find((img) => img.id === 'laptop-mockup');
@@ -175,69 +190,56 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Play Anywhere Section */}
+      {/* Leaderboard Section */}
       <section className="w-full py-24 sm:py-32">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 to-black/80 border border-slate-800 shadow-2xl" style={{
-            backgroundImage: 'linear-gradient(to bottom right, hsl(222 47% 11%) 0%, hsl(0 0% 4%) 100%), url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.05\'/%3E%3C/svg%3E")'
+          <div className="relative overflow-hidden rounded-2xl border border-slate-800 bg-gradient-to-br from-purple-950/40 via-background to-background p-8 md:p-12" style={{
+            backgroundImage: 'linear-gradient(to bottom right, hsl(278 80% 10% / 0.4) 0%, hsl(0 0% 4%) 100%), url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.05\'/%3E%3C/svg%3E")'
           }}>
-            <div className="relative grid grid-cols-1 items-center gap-8 p-8 md:grid-cols-2 md:p-12 lg:gap-16">
-              <div className="relative flex h-full min-h-[300px] w-full items-center justify-center md:min-h-[450px]">
-                {/* Laptop */}
-                {laptopImage && (
-                  <div className="relative w-full max-w-lg" style={{ filter: 'drop-shadow(0 25px 25px rgb(0 0 0 / 0.5))' }}>
-                     <Image
-                      src={laptopImage.imageUrl}
-                      alt={laptopImage.description}
-                      width={1200}
-                      height={750}
-                      className="relative rounded-t-lg border-4 border-gray-700"
-                      data-ai-hint={laptopImage.imageHint}
-                    />
-                     <div className="h-4 w-full rounded-b-lg bg-gray-800"></div>
-                  </div>
-                )}
-                
-                {/* Phone */}
-                {phoneImage && (
-                  <div className="absolute -bottom-8 right-0 w-1/3 max-w-[150px] sm:-bottom-12 sm:right-8 sm:w-1/4" style={{ filter: 'drop-shadow(0 25px 25px rgb(0 0 0 / 0.5))' }}>
-                    <Image
-                      src={phoneImage.imageUrl}
-                      alt={phoneImage.description}
-                      width={300}
-                      height={600}
-                      className="relative rounded-xl border-4 border-gray-700"
-                      data-ai-hint={phoneImage.imageHint}
-                    />
-                  </div>
-                )}
-              </div>
-              <div className="relative z-10 space-y-6 text-center md:text-left">
+             <div className="absolute inset-0 -z-10 bg-grid-pattern opacity-10"></div>
+            <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+              <div className="space-y-6 text-center lg:text-left">
                 <h2 className="font-headline text-4xl font-bold tracking-tight text-white sm:text-5xl">
-                  Play anywhere, anytime
+                  Climb the Leaderboard
                 </h2>
-                <p className="text-lg text-gray-300 md:text-xl">
-                  Our mobile-first design ensures a seamless responsive experience—master web dev quizzes on laptop or phone for anytime brain debugging.
+                <p className="text-lg text-muted-foreground">
+                  Earn points by crushing HTML, CSS, and JavaScript quizzes. Compete on weekly leaderboards, unlock mastery badges, and claim your spot in the Hall of Fame.
                 </p>
-                <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-                  <Badge variant="outline" className="text-sm border-secondary/30 bg-secondary/10 text-secondary">
-                    <MonitorSmartphone className="mr-2 h-4 w-4" />
-                    Responsive interface
-                  </Badge>
-                  <Badge variant="outline" className="text-sm border-secondary/30 bg-secondary/10 text-secondary">
-                    <Code className="mr-2 h-4 w-4" />
-                    Code-focused quizzes
-                  </Badge>
-                  <Badge variant="outline" className="text-sm border-secondary/30 bg-secondary/10 text-secondary">
-                    <Award className="mr-2 h-4 w-4" />
-                    Progress tracking
-                  </Badge>
-                  <Badge variant="outline" className="text-sm border-secondary/30 bg-secondary/10 text-secondary">
-                    <Trophy className="mr-2 h-4 w-4" />
-                    Leaderboard
-                  </Badge>
+                <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
+                  {featureBadges.map((badge, index) => (
+                    <Badge key={index} variant="outline" className="text-sm border-secondary/30 bg-secondary/10 text-secondary">
+                      <badge.icon className="mr-2 h-4 w-4" />
+                      {badge.text}
+                    </Badge>
+                  ))}
                 </div>
               </div>
+              
+              <div className="relative space-y-4">
+                {leaderboardHighlights.map((player) => (
+                  <div key={player.rank} className="glass-card flex items-center gap-4 p-4 transition-all duration-300 hover:border-secondary/50 hover:shadow-[0_0_20px_hsl(var(--secondary)/0.2)]">
+                    <div className={cn("flex h-10 w-10 items-center justify-center rounded-full font-bold text-xl", {
+                      'bg-yellow-400/20 text-yellow-300 ring-2 ring-yellow-400/50': player.rank === 1,
+                      'bg-gray-400/20 text-gray-300': player.rank === 2,
+                      'bg-yellow-600/20 text-yellow-500': player.rank === 3,
+                    })}>
+                      {player.rank}
+                    </div>
+                    <Avatar>
+                       <AvatarImage src={`https://i.pravatar.cc/40?u=${player.username}`} alt={player.username} />
+                      <AvatarFallback>{player.username.charAt(0).toUpperCase()}</AvatarFallback>
+                    </Avatar>
+                    <div className="flex-grow">
+                      <p className="font-medium text-foreground">{player.username}</p>
+                      <Progress value={player.progress} className="h-1.5 mt-1" />
+                    </div>
+                    <div className="font-mono text-lg font-bold text-secondary">
+                      {player.score}pts
+                    </div>
+                  </div>
+                ))}
+              </div>
+
             </div>
           </div>
         </div>
