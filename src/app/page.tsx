@@ -1,11 +1,13 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Logo } from '@/components/Logo';
-import { CodeXml, Paintbrush, ArrowRight } from 'lucide-react';
+import { CodeXml, Paintbrush, ArrowRight, CheckCircle, Trophy, BarChart, Clock } from 'lucide-react';
 import { JsIcon } from '@/components/JsIcon';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { cn } from '@/lib/utils';
+import { Badge } from '@/components/ui/badge';
 
 const modules = [
   {
@@ -23,6 +25,14 @@ const modules = [
     icon: JsIcon,
     href: '/modules/javascript',
   },
+];
+
+const benefits = [
+    { text: 'Practice HTML, CSS, and JavaScript with real code-based questions.' },
+    { text: 'Get instant feedback and explanations after every quiz.' },
+    { text: 'Track your progress, unlock levels, and stay motivated.' },
+    { text: 'Learn at your own pace with short, focused quiz sessions.' },
+    { text: 'Build strong fundamentals for projects and interviews.' },
 ];
 
 export default function Home() {
@@ -110,6 +120,60 @@ export default function Home() {
           ))}
         </div>
       </main>
+
+       {/* Intro Section */}
+       <section className="relative w-full py-24 sm:py-32 overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute -left-32 -top-16 h-96 w-96 rounded-full bg-green-500/10 blur-[100px]"></div>
+          <div className="absolute -right-32 -bottom-16 h-96 w-96 rounded-full bg-blue-500/10 blur-[100px]"></div>
+        </div>
+        <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-4 md:grid-cols-2 md:px-6">
+          <div className="space-y-8">
+            <h2 className="font-headline text-4xl font-bold tracking-tight text-white sm:text-5xl">
+              Learn Web Development Through Interactive Quizzes
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Practice and master HTML, CSS, and JavaScript through bite-sized, gamified quizzes designed to reinforce your learning and build confidence.
+            </p>
+            <ul className="space-y-4">
+              {benefits.map((benefit, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-secondary" />
+                  <span className="text-foreground">{benefit.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div className="relative flex items-center justify-center">
+            <div className="glass-card w-full max-w-lg p-6 transform-gpu transition-transform duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20">
+              <div className="flex items-center justify-between pb-4">
+                  <Badge variant="secondary">HTML</Badge>
+                  <div className="flex items-center gap-4 text-sm">
+                    <div className="flex items-center gap-1">
+                      <Trophy className="h-4 w-4 text-yellow-400" />
+                      <span className="font-mono text-muted-foreground">150pts</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-4 w-4 text-secondary" />
+                      <span className="font-mono text-muted-foreground">00:18</span>
+                    </div>
+                  </div>
+              </div>
+              <div className="mb-4 rounded-md border bg-muted/50 p-4">
+                <pre className="text-sm font-code text-white"><code>&lt;button <span className="text-blue-400">onClick</span>="<span className="text-green-400">showAlert()</span>"&gt;Click Me&lt;/button&gt;</code></pre>
+              </div>
+              <h3 className="mb-4 text-lg font-semibold text-foreground">Which attribute triggers a JavaScript function on click?</h3>
+              <div className="space-y-3">
+                <div className="rounded-md border border-input p-3 text-left text-sm text-muted-foreground">onclick</div>
+                <div className="rounded-md border-2 border-secondary bg-secondary/10 p-3 text-left text-sm text-secondary-foreground ring-4 ring-secondary/20">onClick</div>
+                <div className="rounded-md border border-input p-3 text-left text-sm text-muted-foreground">on-click</div>
+                <div className="rounded-md border border-input p-3 text-left text-sm text-muted-foreground">clickEvent</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Play Anywhere Section */}
       <section className="w-full py-24 sm:py-32">
