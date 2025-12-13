@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -6,7 +7,7 @@ import { quizzes } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { CheckCircle2, XCircle, Trophy, BarChart2 } from 'lucide-react';
+import { CheckCircle2, XCircle, Trophy, BarChart2, AlertTriangle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
@@ -17,7 +18,7 @@ export default function QuizPage() {
   const router = useRouter();
   const { category, slug } = params;
 
-  const [questions, setQuestions] = useState<any[]>([]);
+  const [questions, setQuestions] = useState<any[] | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
@@ -27,8 +28,8 @@ export default function QuizPage() {
 
   useEffect(() => {
     if (typeof category === 'string' && typeof slug === 'string') {
-      const quizData = quizzes[category as keyof typeof quizzes]?.[slug];
-      if (quizData) {
+      const quizData = quizzes[category as keyof typeof quizzes]?.[slug as string];
+      if (quizData && quizData.length > 0) {
         // Shuffle questions and options for variety
         const shuffledQuestions = quizData
           .sort(() => Math.random() - 0.5)
@@ -37,12 +38,14 @@ export default function QuizPage() {
             options: q.options.sort(() => Math.random() - 0.5),
           }));
         setQuestions(shuffledQuestions);
+      } else {
+        setQuestions([]); // Set to empty array if no quiz is found
       }
     }
   }, [category, slug]);
 
   useEffect(() => {
-    if (quizFinished || questions.length === 0 || selectedAnswer !== null) return;
+    if (quizFinished || !questions || questions.length === 0 || selectedAnswer !== null) return;
 
     if (timeLeft === 0) {
       handleAnswerSelect(-1); // Auto-submit incorrect on time out
@@ -57,15 +60,20 @@ export default function QuizPage() {
   }, [timeLeft, quizFinished, selectedAnswer, questions]);
   
   const handleAnswerSelect = (optionIndex: number) => {
-    if (selectedAnswer !== null) return; // Prevent re-answering
+    if (selectedAnswer !== null || !questions) return; // Prevent re-answering
     const currentQuestion = questions[currentQuestionIndex];
-    const correctOptionText = quizzes[category as keyof typeof quizzes]![slug as any]
-      .find((q: any) => q.question === currentQuestion.question)!
-      .options[
-        quizzes[category as keyof typeof quizzes]![slug as any]
-        .find((q: any) => q.question === currentQuestion.question)!.correctAnswer
-      ];
+    
+    // Find the original question data to get the correct answer text
+    const originalQuizBank = quizzes[category as keyof typeof quizzes];
+    if (!originalQuizBank) return;
+    
+    const originalTopicQuestions = originalQuizBank[slug as string];
+    if (!originalTopicQuestions) return;
 
+    const originalQuestionData = originalTopicQuestions.find((q: any) => q.question === currentQuestion.question);
+    if (!originalQuestionData) return;
+
+    const correctOptionText = originalQuestionData.options[originalQuestionData.correctAnswer];
     const selectedOptionText = currentQuestion.options[optionIndex];
 
     setSelectedAnswer(optionIndex);
@@ -79,6 +87,7 @@ export default function QuizPage() {
   };
   
   const handleNextQuestion = () => {
+    if (!questions) return;
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex((prev) => prev + 1);
       setSelectedAnswer(null);
@@ -89,14 +98,36 @@ export default function QuizPage() {
     }
   };
 
-  if (questions.length === 0 && !quizFinished) {
+  if (questions === null) {
+    // Initial loading state
     return (
       <div className="container mx-auto py-8 text-center">
         <h1 className="text-2xl font-bold mb-4">Loading Quiz...</h1>
-        <p>Or maybe this quiz hasn't been created yet!</p>
-         <Button asChild variant="link" className="mt-4">
-            <Link href="/modules">Back to Modules</Link>
-        </Button>
+        <p>Please wait while we prepare your questions.</p>
+      </div>
+    );
+  }
+
+  if (questions.length === 0) {
+    // State when quiz data is not found
+    return (
+      <div className="container mx-auto flex items-center justify-center min-h-[calc(100vh-8rem)] py-8">
+        <Card className="w-full max-w-md text-center glass-card">
+          <CardHeader>
+            <div className="mx-auto bg-destructive/10 p-4 rounded-full w-fit ring-4 ring-destructive/20">
+              <AlertTriangle className="w-12 h-12 text-destructive"/>
+            </div>
+            <CardTitle className="text-3xl font-bold mt-4 font-headline">Quiz Not Found</CardTitle>
+            <CardDescription>
+              We're sorry, but a quiz for this topic has not been created yet.
+            </CardDescription>
+          </CardHeader>
+          <CardFooter>
+            <Button size="lg" variant="outline" className="w-full" asChild>
+                <Link href="/modules">Back to Modules</Link>
+            </Button>
+          </CardFooter>
+        </Card>
       </div>
     );
   }
@@ -131,9 +162,15 @@ export default function QuizPage() {
   }
 
   const currentQuestion = questions[currentQuestionIndex];
-  // We need to find the correct index in the *shuffled* options array
-  const originalQuestionData = quizzes[category as keyof typeof quizzes]![slug as any]
-    .find((q: any) => q.question === currentQuestion.question)!;
+  
+  // Find correct answer index in the *shuffled* options array
+  const originalQuizBank = quizzes[category as keyof typeof quizzes];
+  if (!originalQuizBank) return null; // Should not happen if we got this far
+  const originalTopicQuestions = originalQuizBank[slug as string];
+  if (!originalTopicQuestions) return null;
+  const originalQuestionData = originalTopicQuestions.find((q: any) => q.question === currentQuestion.question);
+  if (!originalQuestionData) return null;
+  
   const correctOptionText = originalQuestionData.options[originalQuestionData.correctAnswer];
   const newCorrectAnswerIndex = currentQuestion.options.indexOf(correctOptionText);
 
