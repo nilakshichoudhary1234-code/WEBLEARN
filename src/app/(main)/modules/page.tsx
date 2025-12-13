@@ -19,7 +19,7 @@ export default function ModulesPage() {
   return (
     <div className="container mx-auto max-w-4xl py-8 px-4 md:px-6">
       <div className="mb-8 text-center">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight font-headline text-foreground">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight font-headline text-foreground">
           EXPLORE WEBLEARN
         </h1>
         <p className="mt-4 text-lg text-muted-foreground">
