@@ -17,14 +17,15 @@
 
 ---
 
-## 🌐 **About WEBLEARN**
-WEBLEARN is a **frontend-only web project** that provides:
+## 🌐 About WEBLEARN
 
-- 📘 Structured learning modules  
-- 🧠 Topic-wise quizzes  
-- ⏱️ Time-based quiz system  
-- 🎯 10 questions per module  
-- 💡 Beginner-friendly UI  
+WEBLEARN is a frontend-only web project that provides:
+
+📘 Structured learning modules  
+🧠 Topic-wise quizzes  
+⏱️ Time-based quiz system  
+🎯 5 questions per module  
+💡 Beginner-friendly UI  
 
 ---
 
