@@ -20,11 +20,12 @@ export default function QuizPage() {
 
   const [questions, setQuestions] = useState<any[] | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [selectedAnswerIndex, setSelectedAnswerIndex] = useState<number | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(TIME_PER_QUESTION);
   const [quizFinished, setQuizFinished] = useState(false);
+  const [answerLocked, setAnswerLocked] = useState(false);
 
   useEffect(() => {
     if (typeof category === 'string' && typeof slug === 'string') {
@@ -45,7 +46,7 @@ export default function QuizPage() {
   }, [category, slug]);
 
   useEffect(() => {
-    if (quizFinished || !questions || questions.length === 0 || selectedAnswer !== null) return;
+    if (quizFinished || answerLocked || !questions || questions.length === 0) return;
 
     if (timeLeft === 0) {
       handleAnswerSelect(-1); // Auto-submit incorrect on time out
@@ -57,10 +58,12 @@ export default function QuizPage() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft, quizFinished, selectedAnswer, questions]);
+  }, [timeLeft, quizFinished, answerLocked, questions]);
   
   const handleAnswerSelect = (optionIndex: number) => {
-    if (selectedAnswer !== null || !questions) return; // Prevent re-answering
+    if (answerLocked || !questions) return; // Prevent re-answering
+    
+    setAnswerLocked(true);
     const currentQuestion = questions[currentQuestionIndex];
     
     // Find the original question data to get the correct answer text
@@ -76,7 +79,7 @@ export default function QuizPage() {
     const correctOptionText = originalQuestionData.options[originalQuestionData.correctAnswer];
     const selectedOptionText = currentQuestion.options[optionIndex];
 
-    setSelectedAnswer(optionIndex);
+    setSelectedAnswerIndex(optionIndex);
 
     if (selectedOptionText === correctOptionText) {
       setIsCorrect(true);
@@ -90,9 +93,10 @@ export default function QuizPage() {
     if (!questions) return;
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex((prev) => prev + 1);
-      setSelectedAnswer(null);
+      setSelectedAnswerIndex(null);
       setIsCorrect(null);
       setTimeLeft(TIME_PER_QUESTION);
+      setAnswerLocked(false);
     } else {
       setQuizFinished(true);
     }
@@ -172,7 +176,7 @@ export default function QuizPage() {
   if (!originalQuestionData) return null;
   
   const correctOptionText = originalQuestionData.options[originalQuestionData.correctAnswer];
-  const newCorrectAnswerIndex = currentQuestion.options.indexOf(correctOptionText);
+  const correctOptionIndex = currentQuestion.options.indexOf(correctOptionText);
 
   return (
     <div className="container mx-auto max-w-2xl py-8">
@@ -189,20 +193,21 @@ export default function QuizPage() {
         </CardHeader>
         <CardContent className="space-y-4">
           {currentQuestion.options.map((option: string, index: number) => {
-            const isSelected = selectedAnswer === index;
-            const isCorrectOption = index === newCorrectAnswerIndex;
+            const isSelected = selectedAnswerIndex === index;
+            const isCorrectOption = index === correctOptionIndex;
             
             return (
               <Button
                 key={index}
                 className={cn("w-full justify-start h-auto py-3 text-left whitespace-normal text-base option", {
-                  'correct': selectedAnswer !== null && isCorrectOption,
-                  'wrong': selectedAnswer !== null && isSelected && !isCorrect,
-                  'hover:bg-accent/50 hover:border-secondary': selectedAnswer === null,
+                  'correct': answerLocked && isCorrectOption,
+                  'wrong': answerLocked && isSelected && !isCorrectOption,
+                  'hover:bg-accent/50 hover:border-secondary': !answerLocked,
+                  'disabled': answerLocked
                 })}
                 variant={"outline"}
                 onClick={() => handleAnswerSelect(index)}
-                disabled={selectedAnswer !== null}
+                disabled={answerLocked}
               >
                 <span className="mr-4 flex h-6 w-6 items-center justify-center rounded-full border">{String.fromCharCode(65 + index)}</span>
                 {option}
@@ -210,7 +215,7 @@ export default function QuizPage() {
             );
           })}
         </CardContent>
-        {selectedAnswer !== null && (
+        {answerLocked && (
             <CardFooter className="flex-col items-start gap-4 border-t pt-6">
                 <div className="flex items-center">
                     {isCorrect ? <CheckCircle2 className="h-6 w-6 text-success mr-2"/> : <XCircle className="h-6 w-6 text-destructive mr-2"/>}
@@ -226,4 +231,3 @@ export default function QuizPage() {
     </div>
   );
 }
-

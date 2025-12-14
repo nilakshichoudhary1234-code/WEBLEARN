@@ -32,7 +32,7 @@ body {
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     
-    --success: 122 39% 49%;
+    --success: 142 71% 45%; /* #16a34a */
     --success-foreground: 0 0% 100%;
 
     --border: 0 0% 15%;
@@ -67,7 +67,7 @@ body {
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     
-    --success: 122 39% 49%;
+    --success: 142 71% 45%;
     --success-foreground: 0 0% 100%;
 
     --border: 0 0% 15%;
@@ -107,16 +107,19 @@ body {
   }
 
   .option.correct {
-    @apply bg-success/20 border-success text-foreground;
+    @apply bg-success/20 border-success text-success-foreground;
   }
   .option.correct:hover {
     @apply bg-success/30;
   }
   .option.wrong {
-    @apply bg-destructive/20 border-destructive text-foreground;
+    @apply bg-destructive/20 border-destructive text-destructive-foreground;
   }
   .option.wrong:hover {
     @apply bg-destructive/30;
+  }
+  .option.disabled {
+    @apply pointer-events-none opacity-90;
   }
 }
 
