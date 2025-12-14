@@ -65,27 +65,16 @@ WEBLEARN is a frontend-only web project that provides:
 
 ---
 
-### 🎨 **Icon Theme Explanation**
-- 🌐 Learning modules  
-- 🎨 Styling & UI  
-- ⚙️ Logic & functionality  
-- 🧠 Quiz intelligence  
-- 🏠 Main entry point  
+## ✅ Project Highlights
 
----
+<div align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?size=22&duration=2500&color=36BCF7&center=true&vCenter=true&width=550&lines=WEBLEARN+Project+Highlights;Modern+Animated+Frontend+Project" />
+</div>
 
-### ✨ **Why This Structure Is Good**
-✅ Beginner-friendly  
-✅ Clean separation of concerns  
-✅ Easy to extend modules  
-✅ Perfect for frontend-only projects  
+✔ Animated sections for better user engagement  
+✔ Clean and easy-to-understand project flow  
+✔ Professional quiz working logic  
+✔ Fully responsive design documentation  
+✔ Website theme-matched color palette  
 
----
-
-If you want next:
-🔥 **Animated flow diagram**  
-🎯 **Quiz working explanation section**  
-📱 **Responsive design section**  
-🎨 **Match exact colors of your website**
-
-Just tell me 😄
+✨ Designed to be simple, interactive, and beginner-friendly
