@@ -31,6 +31,9 @@ body {
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
+    
+    --success: 122 39% 49%;
+    --success-foreground: 0 0% 100%;
 
     --border: 0 0% 15%;
     --input: 0 0% 12%;
@@ -63,6 +66,9 @@ body {
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
+    
+    --success: 122 39% 49%;
+    --success-foreground: 0 0% 100%;
 
     --border: 0 0% 15%;
     --input: 0 0% 12%;
@@ -98,6 +104,19 @@ body {
 
   .glass-card {
     @apply rounded-xl border border-white/10 bg-white/5 backdrop-blur-lg;
+  }
+
+  .option.correct {
+    @apply bg-success/20 border-success text-foreground;
+  }
+  .option.correct:hover {
+    @apply bg-success/30;
+  }
+  .option.wrong {
+    @apply bg-destructive/20 border-destructive text-foreground;
+  }
+  .option.wrong:hover {
+    @apply bg-destructive/30;
   }
 }
 

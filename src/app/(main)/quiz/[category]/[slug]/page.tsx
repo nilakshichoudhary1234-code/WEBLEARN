@@ -195,10 +195,10 @@ export default function QuizPage() {
             return (
               <Button
                 key={index}
-                className={cn("w-full justify-start h-auto py-3 text-left whitespace-normal text-base", {
-                    'bg-green-500/10 border-green-500 text-foreground hover:bg-green-500/20': selectedAnswer !== null && isCorrectOption,
-                    'bg-red-500/10 border-red-500 text-foreground hover:bg-red-500/20': selectedAnswer !== null && isSelected && !isCorrect,
-                    'hover:bg-accent/50 hover:border-secondary': selectedAnswer === null,
+                className={cn("w-full justify-start h-auto py-3 text-left whitespace-normal text-base option", {
+                  'correct': selectedAnswer !== null && isCorrectOption,
+                  'wrong': selectedAnswer !== null && isSelected && !isCorrect,
+                  'hover:bg-accent/50 hover:border-secondary': selectedAnswer === null,
                 })}
                 variant={"outline"}
                 onClick={() => handleAnswerSelect(index)}
@@ -213,7 +213,7 @@ export default function QuizPage() {
         {selectedAnswer !== null && (
             <CardFooter className="flex-col items-start gap-4 border-t pt-6">
                 <div className="flex items-center">
-                    {isCorrect ? <CheckCircle2 className="h-6 w-6 text-green-500 mr-2"/> : <XCircle className="h-6 w-6 text-red-500 mr-2"/>}
+                    {isCorrect ? <CheckCircle2 className="h-6 w-6 text-success mr-2"/> : <XCircle className="h-6 w-6 text-destructive mr-2"/>}
                     <h3 className="text-lg font-semibold">{isCorrect ? 'Correct!' : 'Incorrect'}</h3>
                 </div>
                 <p className="text-muted-foreground">{currentQuestion.explanation}</p>
