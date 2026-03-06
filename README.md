@@ -9,20 +9,7 @@
 <img src="https://readme-typing-svg.herokuapp.com?font=Poppins&weight=600&size=30&duration=2800&pause=800&color=22C55E&center=true&vCenter=true&width=900&lines=🌐+WELCOME+TO+WEBLEARN;💻+Learn+Frontend+Interactively;🧠+Practice+HTML+CSS+JavaScript;⏱️+Time+Based+Quiz+System;✨+Created+by+Nilakshi+Choudhary" />
 
 </div>
-
----
-
-<div align="center">
-
-<img src="https://raw.githubusercontent.com/rajput2107/rajput2107/master/Assets/Developer.gif" width="320"/>
-
-</div>
-
-<p align="center">
-
-<b>WEBLEARN</b> is an interactive frontend learning platform designed to help beginners learn <b>HTML, CSS, and JavaScript</b> through structured modules and engaging quizzes.
-
-</p>
+ 
 
 ---
 
@@ -81,24 +68,7 @@ Each module includes an interactive quiz:
 ✔ Topic focused questions  
 
 ---
-
-## 🛠️Tech Stack
-
-<div align="center">
-
-<img src="https://skillicons.dev/icons?i=html,css,js" />
-
-</div>
-
-<p align="center">
-
-<img src="https://img.shields.io/badge/HTML5-FF7A00?style=for-the-badge&logo=html5&logoColor=white"/>
-<img src="https://img.shields.io/badge/CSS3-22C55E?style=for-the-badge&logo=css3&logoColor=white"/>
-<img src="https://img.shields.io/badge/JavaScript-FF7A00?style=for-the-badge&logo=javascript&logoColor=black"/>
-
-</p>
-
----
+ 
 
 ## ✨Project Highlights
 
