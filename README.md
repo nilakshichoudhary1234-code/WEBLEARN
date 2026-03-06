@@ -1,8 +1,12 @@
-# 🌐 WEBLEARN – Interactive Web Learning Platform
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&height=220&color=0:FF7A00,100:22C55E&text=WEBLEARN&fontSize=55&fontAlign=50&fontAlignY=35&animation=fadeIn&fontColor=ffffff&desc=Interactive%20Frontend%20Learning%20Platform&descAlign=50&descAlignY=60"/>
+
+</div>
 
 <div align="center">
 
-<img src="https://readme-typing-svg.herokuapp.com?size=36&duration=3000&color=FF7A00&center=true&vCenter=true&width=850&lines=🌐+WELCOME+TO+WEBLEARN+🌐;💻+Learn+Frontend+Interactively;🧠+Practice+With+Smart+Quizzes;⏱️+Time+Based+Learning+Experience;✨+Created+by+Nilakshi+Choudhary" />
+<img src="https://readme-typing-svg.herokuapp.com?font=Poppins&weight=600&size=30&duration=2800&pause=800&color=22C55E&center=true&vCenter=true&width=900&lines=🌐+WELCOME+TO+WEBLEARN;💻+Learn+Frontend+Interactively;🧠+Practice+HTML+CSS+JavaScript;⏱️+Time+Based+Quiz+System;✨+Created+by+Nilakshi+Choudhary" />
 
 </div>
 
@@ -38,38 +42,36 @@ WEBLEARN is a **frontend-based educational project** that helps students strengt
 
 ---
 
-## 🧩 Learning Modules
+## 🧩Learning Modules
 
-<div align="center">
-<img src="https://i.giphy.com/media/ZVik7pBtu9dNS/giphy.webp" width="300">
-</div>
+ 
 
-### 🔶 HTML
+### 🔶HTML
 - Tags & Elements  
 - Forms  
 - Tables  
 - Semantic HTML  
 
-### 🎨 CSS
+### 🎨CSS
 - Styling Basics  
 - Flexbox  
 - Grid Layout  
 - Responsive Design  
 
-### ⚙️ JavaScript
+### ⚙️JavaScript
 - Variables & Functions  
 - DOM Manipulation  
 - Events  
 - Logic Building  
 
-### 🧠 Quiz System
+### 🧠Quiz System
 - Topic-wise quizzes  
 - Instant practice  
 - Score-based learning  
 
 ---
 
-## ⏱️ Quiz System
+## ⏱️Quiz System
 
 Each module includes an interactive quiz:
 
@@ -80,7 +82,7 @@ Each module includes an interactive quiz:
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️Tech Stack
 
 <div align="center">
 
@@ -98,7 +100,7 @@ Each module includes an interactive quiz:
 
 ---
 
-## ✨ Project Highlights
+## ✨Project Highlights
 
 <div align="center">
 
@@ -114,7 +116,7 @@ Each module includes an interactive quiz:
 
 ---
 
-## 🎯 Project Goal
+## 🎯Project Goal
 
 The goal of **WEBLEARN** is to make **learning frontend development simple, interactive, and engaging** for beginners who want to practice web development concepts with quizzes.
 
@@ -122,8 +124,8 @@ The goal of **WEBLEARN** is to make **learning frontend development simple, inte
 
 <div align="center">
 
-⭐ If you like this project, **give it a star!**
+⭐If you like this project, **give it a star!**
 
-💚 Built with passion for learners.
+💚Built with passion for learners.
 
 </div>
